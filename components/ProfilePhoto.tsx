@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { soundFx } from "@/lib/sound";
 
 const photos = [
@@ -37,11 +38,18 @@ export function ProfilePhoto() {
       >
         {/* Photo Container */}
         <div className="relative aspect-[4/4.8] sm:aspect-[4/5.2] w-full rounded-xl overflow-hidden bg-[#0a0d14] border border-white/5 flex items-center justify-center">
-          <img
-            src={currentPhoto.src}
-            alt="Hor Tola - Full-Stack Software Engineer"
-            className={`w-full h-full object-cover ${currentPhoto.position} transition-all duration-700 group-hover:scale-105 filter group-hover:brightness-105`}
-          />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentPhoto.src}
+              src={currentPhoto.src}
+              alt="Hor Tola - Full-Stack Software Engineer"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.04 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className={`w-full h-full object-cover ${currentPhoto.position}`}
+            />
+          </AnimatePresence>
 
           {/* Cyberpunk Scanline & Vignette Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
@@ -53,14 +61,16 @@ export function ProfilePhoto() {
           <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-400 pointer-events-none"></div>
 
           {/* Interactive Photo Switcher Badge in Top Right */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleTogglePhoto}
             title="Click to toggle photo angle"
             className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-mono text-cyan-300 hover:text-white hover:border-cyan-400 transition flex items-center gap-1.5 shadow-lg cursor-pointer"
           >
             <span>🔄</span>
             <span>Switch Photo</span>
-          </button>
+          </motion.button>
 
           {/* Bottom Card Identity Overlay */}
           <div className="absolute bottom-0 inset-x-0 p-5 space-y-1 z-10">

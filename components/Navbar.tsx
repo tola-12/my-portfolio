@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import { useToast } from "./ToastProvider";
 import { soundFx } from "@/lib/sound";
@@ -114,42 +115,49 @@ export function Navbar() {
           {/* Right CTAs */}
           <div className="flex items-center gap-2">
             {/* Audio Toggle */}
-            <button
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={toggleSound}
               title={isSoundOn ? "Mute UI sounds" : "Enable UI sounds"}
               className="p-2 rounded-lg glass-panel hover:bg-white/10 text-slate-300 transition text-xs flex items-center justify-center cursor-pointer"
             >
               <span>{isSoundOn ? "🔊" : "🔇"}</span>
-            </button>
+            </motion.button>
 
             {/* Resume / CV Modal Trigger */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 soundFx.playClick();
                 setIsResumeOpen(true);
               }}
-              className="px-3 py-1.5 rounded-lg glass-panel border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium hover:bg-cyan-500/10 transition hidden sm:inline-flex items-center gap-1.5 shadow-sm"
+              className="px-3 py-1.5 rounded-lg glass-panel border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium hover:bg-cyan-500/10 transition hidden sm:inline-flex items-center gap-1.5 shadow-sm cursor-pointer"
             >
               <span>📄</span>
               <span>Resume</span>
-            </button>
+            </motion.button>
 
             {/* Birthday / Milestone Trigger */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={fireCelebration}
               className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-medium hover:bg-emerald-500/20 transition flex items-center gap-1.5 cursor-pointer shadow-sm"
             >
               <span>🎉</span>
               <span className="font-semibold">Level 21</span>
-            </button>
+            </motion.button>
 
-            <a
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.95 }}
               href="#contact"
               onClick={() => soundFx.playClick()}
-              className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-medium rounded-lg bg-white text-brand-dark font-semibold hover:bg-slate-200 transition shadow-md shadow-white/5"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-medium rounded-lg bg-white text-brand-dark font-semibold hover:bg-slate-200 transition shadow-md shadow-white/5 cursor-pointer"
             >
               Connect
-            </a>
+            </motion.a>
 
             {/* Mobile Menu Button */}
             <button
@@ -171,44 +179,52 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-white/5 bg-brand-dark/95 backdrop-blur-2xl px-4 py-4 space-y-2">
-            {[
-              { href: "#about", label: "About" },
-              { href: "#skills", label: "Skills Matrix" },
-              { href: "#projects", label: "Projects" },
-              { href: "#terminal-section", label: "Terminal" },
-              { href: "#github-showcase", label: "GitHub Open Source" },
-              { href: "#testimonials", label: "Testimonials" },
-              { href: "#contact", label: "Connect & Contact" },
-            ].map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => {
-                  soundFx.playClick();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-cyan-400 hover:bg-white/5 transition"
-              >
-                {link.label}
-              </a>
-            ))}
-            <div className="pt-2 border-t border-white/5 flex gap-2">
-              <button
-                onClick={() => {
-                  soundFx.playClick();
-                  setIsResumeOpen(true);
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex-1 py-2 rounded-lg glass-panel text-xs font-mono text-cyan-300 text-center"
-              >
-                📄 View Resume
-              </button>
-            </div>
-          </div>
-        )}
+        {/* Mobile Navigation Drawer with AnimatePresence */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="lg:hidden border-t border-white/5 bg-brand-dark/95 backdrop-blur-2xl px-4 py-4 space-y-2 overflow-hidden"
+            >
+              {[
+                { href: "#about", label: "About" },
+                { href: "#skills", label: "Skills Matrix" },
+                { href: "#projects", label: "Projects" },
+                { href: "#terminal-section", label: "Terminal" },
+                { href: "#github-showcase", label: "GitHub Open Source" },
+                { href: "#testimonials", label: "Testimonials" },
+                { href: "#contact", label: "Connect & Contact" },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => {
+                    soundFx.playClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-cyan-400 hover:bg-white/5 transition"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <div className="pt-2 border-t border-white/5 flex gap-2">
+                <button
+                  onClick={() => {
+                    soundFx.playClick();
+                    setIsResumeOpen(true);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex-1 py-2 rounded-lg glass-panel text-xs font-mono text-cyan-300 text-center cursor-pointer"
+                >
+                  📄 View Resume
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Resume Modal */}

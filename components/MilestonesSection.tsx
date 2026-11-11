@@ -1,4 +1,8 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
+import { soundFx } from "@/lib/sound";
 
 export function MilestonesSection() {
   const milestones = [
@@ -46,22 +50,35 @@ export function MilestonesSection() {
 
   return (
     <section id="milestones" className="space-y-6 scroll-mt-24">
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+      >
         <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
           Chronological Milestones
         </h2>
         <p className="text-2xl sm:text-3xl font-extrabold text-white">
           Growth Journey & Achievements Timeline
         </p>
-      </div>
+      </motion.div>
 
       <div className="relative border-l border-white/10 ml-4 sm:ml-8 pl-6 sm:pl-8 space-y-8">
         {milestones.map((m, idx) => (
-          <div key={idx} className="relative group">
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
+            onMouseEnter={() => soundFx.playBlip()}
+            className="relative group cursor-default"
+          >
             <div
-              className={`absolute -left-[33px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full ${m.color} ring-4 ring-brand-dark`}
+              className={`absolute -left-[33px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full ${m.color} ring-4 ring-brand-dark transition-transform duration-300 group-hover:scale-125 shadow-[0_0_8px_currentColor]`}
             />
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 transition-transform duration-200 group-hover:translate-x-1">
               <div className="flex items-center gap-2">
                 <span className={`text-xs font-mono font-semibold ${m.textColor}`}>
                   {m.period}
@@ -70,12 +87,14 @@ export function MilestonesSection() {
                   {m.badge}
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white">{m.title}</h3>
+              <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                {m.title}
+              </h3>
               <p className="text-sm text-slate-300 leading-relaxed max-w-3xl">
                 {m.desc}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

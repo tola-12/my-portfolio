@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { GitHubProfile, GitHubRepo } from "@/lib/github";
 import { soundFx } from "@/lib/sound";
 
@@ -41,7 +42,13 @@ export function GitHubShowcase() {
 
   return (
     <section id="github-showcase" className="space-y-6 scroll-mt-24">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+      >
         <div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -55,66 +62,81 @@ export function GitHubShowcase() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => {
               soundFx.playClick();
               loadData();
             }}
             disabled={loading}
-            className="px-3 py-1.5 rounded-lg glass-panel text-xs font-mono text-cyan-300 hover:text-white transition flex items-center gap-1.5"
+            className="px-3 py-1.5 rounded-lg glass-panel text-xs font-mono text-cyan-300 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
           >
             <span className={loading ? "animate-spin" : ""}>🔄</span>
             <span>{loading ? "Syncing..." : "Sync Live Stats"}</span>
-          </button>
+          </motion.button>
 
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href="https://github.com/tola-12"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundFx.playClick()}
-            className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-mono font-medium transition flex items-center gap-1.5"
+            className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-mono font-medium transition flex items-center gap-1.5 cursor-pointer"
           >
             <span>github/tola-12</span>
             <span>&rarr;</span>
-          </a>
+          </motion.a>
         </div>
-      </div>
+      </motion.div>
 
       {/* Profile Metrics Bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
-        <div className="glass-panel p-4 rounded-xl border border-white/5 space-y-1">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs"
+      >
+        <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-cyan-500/20 transition-colors">
           <div className="text-slate-400">Public Repos</div>
           <div className="text-xl font-bold text-white">
             {profile?.public_repos ?? "12+"}
           </div>
-        </div>
-        <div className="glass-panel p-4 rounded-xl border border-white/5 space-y-1">
+        </motion.div>
+        <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-cyan-500/20 transition-colors">
           <div className="text-slate-400">Total Followers</div>
           <div className="text-xl font-bold text-cyan-400">
             {profile?.followers ?? "18+"}
           </div>
-        </div>
-        <div className="glass-panel p-4 rounded-xl border border-white/5 space-y-1">
+        </motion.div>
+        <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-emerald-500/20 transition-colors">
           <div className="text-slate-400">Primary Language</div>
           <div className="text-xl font-bold text-emerald-400">PHP / Dart</div>
-        </div>
-        <div className="glass-panel p-4 rounded-xl border border-white/5 space-y-1">
+        </motion.div>
+        <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-teal-500/20 transition-colors">
           <div className="text-slate-400">Ecosystem</div>
           <div className="text-xl font-bold text-teal-300">Laravel & Flutter</div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Repositories Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {repos.length > 0 ? (
-          repos.map((repo) => (
-            <a
+          repos.map((repo, idx) => (
+            <motion.a
               key={repo.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
               href={repo.html_url}
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => soundFx.playBlip()}
-              className="glass-panel p-5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-4 group"
+              className="glass-panel p-5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col justify-between space-y-4 group cursor-pointer"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -141,7 +163,7 @@ export function GitHubShowcase() {
                 </div>
                 <span>View on GitHub &rarr;</span>
               </div>
-            </a>
+            </motion.a>
           ))
         ) : (
           // Pre-rendered featured builds if offline or rate limited
@@ -168,13 +190,18 @@ export function GitHubShowcase() {
               url: "https://github.com/tola-12",
             },
           ].map((item, idx) => (
-            <a
+            <motion.a
               key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => soundFx.playBlip()}
-              className="glass-panel p-5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-4 group"
+              className="glass-panel p-5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col justify-between space-y-4 group cursor-pointer"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -201,7 +228,7 @@ export function GitHubShowcase() {
                 </div>
                 <span>View on GitHub &rarr;</span>
               </div>
-            </a>
+            </motion.a>
           ))
         )}
       </div>

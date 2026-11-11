@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ToastProvider } from "@/components/ToastProvider";
+import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://hortola.dev"),
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="bg-brand-dark text-slate-100 font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-300 relative overflow-x-hidden min-h-screen">
+        <ScrollProgressBar />
         {/* Subtle Background Gradients */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="absolute -top-40 left-1/4 w-[500px] h-[500px] bg-cyan-600/15 rounded-full blur-[130px]"></div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import { useToast } from "./ToastProvider";
 import { soundFx } from "@/lib/sound";
@@ -194,16 +195,27 @@ export function TerminalSection() {
 
   return (
     <section id="terminal-section" className="space-y-6 scroll-mt-24">
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+      >
         <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
           Command Interface
         </h2>
         <p className="text-2xl sm:text-3xl font-extrabold text-white">
           Interactive Developer Console
         </p>
-      </div>
+      </motion.div>
 
-      <div className="rounded-2xl border border-white/10 bg-[#0B0D13] shadow-2xl overflow-hidden font-mono text-sm">
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="rounded-2xl border border-white/10 bg-[#0B0D13] shadow-2xl overflow-hidden font-mono text-sm hover:border-cyan-500/30 transition-colors"
+      >
         {/* Terminal Header Bar */}
         <div className="bg-[#121620] px-4 py-3 border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -250,12 +262,12 @@ export function TerminalSection() {
           />
           <button
             onClick={handleCommand}
-            className="text-xs px-3 py-1 bg-white/10 hover:bg-cyan-500 hover:text-black rounded text-slate-300 font-mono transition"
+            className="text-xs px-3 py-1 bg-white/10 hover:bg-cyan-500 hover:text-black rounded text-slate-300 font-mono transition cursor-pointer"
           >
             Run
           </button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

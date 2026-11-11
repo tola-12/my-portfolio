@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { soundFx } from "@/lib/sound";
 
 interface Testimonial {
@@ -45,21 +46,31 @@ const testimonials: Testimonial[] = [
 export function TestimonialsSection() {
   return (
     <section id="testimonials" className="space-y-6 scroll-mt-24">
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+      >
         <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
           Peer & Mentor Endorsements
         </h2>
         <p className="text-2xl sm:text-3xl font-extrabold text-white">
           Recommendations & Verified Impact
         </p>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {testimonials.map((item, idx) => (
-          <div
+          <motion.div
             key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
+            whileHover={{ y: -6, transition: { duration: 0.2 } }}
             onMouseEnter={() => soundFx.playBlip()}
-            className="glass-panel rounded-2xl p-6 border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-4 group"
+            className="glass-panel rounded-2xl p-6 border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col justify-between space-y-4 group cursor-default"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -89,7 +100,7 @@ export function TestimonialsSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

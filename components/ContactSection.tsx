@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useTransition } from "react";
+import { motion } from "framer-motion";
 import { submitContactMessage } from "@/app/actions/contact";
 import { useToast } from "./ToastProvider";
 import { soundFx } from "@/lib/sound";
@@ -38,7 +39,13 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="space-y-6 scroll-mt-24">
-      <div className="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border-cyan-500/20">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border-cyan-500/20"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Left Contact Info */}
           <div className="space-y-6">
@@ -163,7 +170,9 @@ export function ContactSection() {
               ></textarea>
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.015 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isPending}
               className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 text-brand-dark font-bold text-sm tracking-tight hover:opacity-95 transition shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 disabled:opacity-75 cursor-pointer"
@@ -179,10 +188,10 @@ export function ContactSection() {
               ) : (
                 <span>Transmit Message (Saved to DB + Instant Telegram Alert)</span>
               )}
-            </button>
+            </motion.button>
           </form>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

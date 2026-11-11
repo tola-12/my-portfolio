@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { soundFx } from "@/lib/sound";
 
 interface SkillItem {
@@ -163,7 +164,13 @@ export function SkillsMatrix() {
 
   return (
     <section id="skills" className="space-y-6 scroll-mt-24">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+      >
         <div>
           <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
             Technical Skill Matrix
@@ -176,58 +183,74 @@ export function SkillsMatrix() {
         {/* Domain Filter Pills */}
         <div className="flex flex-wrap gap-2 text-xs font-mono">
           {domains.map((dom) => (
-            <button
+            <motion.button
               key={dom.key}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => handleSelect(dom.key)}
               onMouseEnter={() => soundFx.playBlip()}
-              className={`px-3 py-1.5 rounded-lg transition ${
+              className={`px-3 py-1.5 rounded-lg transition relative ${
                 activeDomain === dom.key
-                  ? "bg-cyan-400 text-brand-dark font-bold shadow-lg shadow-cyan-500/20"
-                  : "glass-panel text-slate-300 hover:text-white"
+                  ? "bg-cyan-400 text-brand-dark font-bold shadow-lg shadow-cyan-500/25"
+                  : "glass-panel text-slate-300 hover:text-white hover:border-cyan-500/30"
               }`}
             >
               {dom.label}
-            </button>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* Skills Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filtered.map((skill, idx) => (
-          <div
-            key={idx}
-            onMouseEnter={() => soundFx.playBlip()}
-            className="glass-panel rounded-2xl p-5 border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 space-y-3 group"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800/40 px-2 py-0.5 rounded">
-                {skill.highlight}
-              </span>
-              <span className="text-xs font-mono text-slate-400 font-semibold">
-                {skill.level}%
-              </span>
-            </div>
+      {/* Skills Grid with AnimatePresence & Layout transitions */}
+      <motion.div
+        layout
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
+        <AnimatePresence mode="popLayout">
+          {filtered.map((skill) => (
+            <motion.div
+              layout
+              key={skill.name}
+              initial={{ opacity: 0, scale: 0.92, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 10 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              onMouseEnter={() => soundFx.playBlip()}
+              className="glass-panel rounded-2xl p-5 border border-white/5 hover:border-cyan-500/30 transition-colors space-y-3 group"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800/40 px-2 py-0.5 rounded">
+                  {skill.highlight}
+                </span>
+                <span className="text-xs font-mono text-slate-400 font-semibold">
+                  {skill.level}%
+                </span>
+              </div>
 
-            <div>
-              <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition">
-                {skill.name}
-              </h3>
-              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                {skill.desc}
-              </p>
-            </div>
+              <div>
+                <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition">
+                  {skill.name}
+                </h3>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  {skill.desc}
+                </p>
+              </div>
 
-            {/* Visual Progress Bar */}
-            <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
-              <div
-                className="bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 h-full rounded-full transition-all duration-700"
-                style={{ width: `${skill.level}%` }}
-              ></div>
-            </div>
-          </div>
-        ))}
-      </div>
+              {/* Animated Progress Bar */}
+              <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                <motion.div
+                  className="bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 h-full rounded-full"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${skill.level}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.85, delay: 0.1, ease: "easeOut" }}
+                />
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 }

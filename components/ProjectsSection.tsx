@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ProjectItem } from "@/types/portfolio";
 import { ProjectModal } from "./ProjectModal";
 import { likeProject } from "@/app/actions/likes";
@@ -127,7 +128,13 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="space-y-6 scroll-mt-24">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+      >
         <div>
           <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
             Engineering Portfolio
@@ -146,8 +153,10 @@ export function ProjectsSection() {
             { key: "agritech", label: "AgriTech" },
             { key: "community", label: "Community" },
           ].map((item) => (
-            <button
+            <motion.button
               key={item.key}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 soundFx.playClick();
                 setFilter(item.key);
@@ -159,71 +168,80 @@ export function ProjectsSection() {
               }`}
             >
               {item.label}
-            </button>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      {/* Project Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredProjects.map((project) => (
-          <div
-            key={project.id}
-            onMouseEnter={() => soundFx.playBlip()}
-            className="project-card glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="p-6 space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
-                  {project.badge}
-                </span>
-                <span className="text-xs text-slate-400 font-mono">
-                  {project.timeline}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white">{project.title}</h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-1.5 pt-2">
-                {project.techStack.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-300"
-                  >
-                    {tech}
+      {/* Project Cards Grid with Layout Animations */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project) => (
+            <motion.div
+              layout
+              key={project.id}
+              initial={{ opacity: 0, scale: 0.93, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 10 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              onMouseEnter={() => soundFx.playBlip()}
+              className="project-card glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-white/5 hover:border-cyan-500/30 transition-colors"
+            >
+              <div className="p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
+                    {project.badge}
                   </span>
-                ))}
+                  <span className="text-xs text-slate-400 font-mono">
+                    {project.timeline}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {project.techStack.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-300"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
-              <span className="text-xs text-emerald-400 font-mono font-medium">
-                {project.highlight}
-              </span>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={(e) => handleLike(project.id, e)}
-                  className="text-xs font-mono text-slate-400 hover:text-rose-400 flex items-center gap-1 transition cursor-pointer"
-                  title="Applaud project"
-                >
-                  <span>👏</span>
-                  <span>{likesMap[project.id] ?? 0}</span>
-                </button>
-                <button
-                  onClick={() => {
-                    soundFx.playClick();
-                    setActiveModalProject(project);
-                  }}
-                  className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1 cursor-pointer"
-                >
-                  Details &rarr;
-                </button>
+              <div className="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                <span className="text-xs text-emerald-400 font-mono font-medium">
+                  {project.highlight}
+                </span>
+                <div className="flex items-center gap-3">
+                  <motion.button
+                    whileTap={{ scale: 0.85 }}
+                    onClick={(e) => handleLike(project.id, e)}
+                    className="text-xs font-mono text-slate-400 hover:text-rose-400 flex items-center gap-1 transition cursor-pointer"
+                    title="Applaud project"
+                  >
+                    <span>👏</span>
+                    <span>{likesMap[project.id] ?? 0}</span>
+                  </motion.button>
+                  <button
+                    onClick={() => {
+                      soundFx.playClick();
+                      setActiveModalProject(project);
+                    }}
+                    className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1 cursor-pointer"
+                  >
+                    Details &rarr;
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {/* Details Modal */}
       <ProjectModal
