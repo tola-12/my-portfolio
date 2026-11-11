@@ -41,16 +41,18 @@ export function Navbar() {
     <>
       <header className="sticky top-0 z-40 w-full border-b border-white/5 bg-brand-dark/80 backdrop-blur-xl transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Brand Logo with Profile Picture */}
           <a
             href="#"
             onClick={() => soundFx.playClick()}
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-emerald-500 to-blue-600 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-cyan-500/20">
-              <div className="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center font-mono font-bold text-sm tracking-tighter text-white">
-                HT<span className="text-cyan-400">.</span>
-              </div>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-emerald-500 to-blue-600 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-cyan-500/20 overflow-hidden flex-shrink-0">
+              <img
+                src="/images/hortola_.jpg"
+                alt="Hor Tola"
+                className="w-full h-full object-cover rounded-[9px]"
+              />
             </div>
             <div className="hidden sm:block">
               <div className="font-bold text-sm text-slate-100 tracking-tight flex items-center gap-1.5">

@@ -3,20 +3,26 @@
 import React, { useState } from "react";
 import { soundFx } from "@/lib/sound";
 
-export function ProfilePhoto() {
-  const [imgSrc, setImgSrc] = useState<string>("/images/hortola_.jpg");
-  const [hasError, setHasError] = useState(false);
+const photos = [
+  {
+    src: "/images/Hor_Tola.jpeg",
+    label: "Studio Portrait",
+    position: "object-top",
+  },
+  {
+    src: "/images/hortola_.jpg",
+    label: "Casual",
+    position: "object-center",
+  },
+];
 
-  const handleError = () => {
-    if (!hasError) {
-      // Try profile.png next, otherwise fallback to SVG placeholder
-      if (imgSrc.endsWith(".jpg")) {
-        setImgSrc("/images/hortola_.jpg");
-      } else {
-        setHasError(true);
-        setImgSrc("images/hortola_.jpg");
-      }
-    }
+export function ProfilePhoto() {
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const currentPhoto = photos[photoIndex];
+
+  const handleTogglePhoto = () => {
+    soundFx.playClick();
+    setPhotoIndex((prev) => (prev + 1) % photos.length);
   };
 
   return (
@@ -30,16 +36,15 @@ export function ProfilePhoto() {
         className="relative rounded-2xl glass-panel p-3 border border-white/10 shadow-2xl overflow-hidden"
       >
         {/* Photo Container */}
-        <div className="relative aspect-[4/4.5] sm:aspect-[4/5] w-full rounded-xl overflow-hidden bg-[#0a0d14] border border-white/5 flex items-center justify-center">
+        <div className="relative aspect-[4/4.8] sm:aspect-[4/5.2] w-full rounded-xl overflow-hidden bg-[#0a0d14] border border-white/5 flex items-center justify-center">
           <img
-            src={imgSrc}
+            src={currentPhoto.src}
             alt="Hor Tola - Full-Stack Software Engineer"
-            onError={handleError}
-            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 filter group-hover:brightness-105"
+            className={`w-full h-full object-cover ${currentPhoto.position} transition-all duration-700 group-hover:scale-105 filter group-hover:brightness-105`}
           />
 
-          {/* Cyberpunk Scanline & Corner Accents */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+          {/* Cyberpunk Scanline & Vignette Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
 
           {/* Cyberpunk Corner HUD brackets */}
           <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-cyan-400 pointer-events-none"></div>
@@ -47,10 +52,20 @@ export function ProfilePhoto() {
           <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-emerald-400 pointer-events-none"></div>
           <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-400 pointer-events-none"></div>
 
+          {/* Interactive Photo Switcher Badge in Top Right */}
+          <button
+            onClick={handleTogglePhoto}
+            title="Click to toggle photo angle"
+            className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-mono text-cyan-300 hover:text-white hover:border-cyan-400 transition flex items-center gap-1.5 shadow-lg cursor-pointer"
+          >
+            <span>🔄</span>
+            <span>Switch Photo</span>
+          </button>
+
           {/* Bottom Card Identity Overlay */}
-          <div className="absolute bottom-0 inset-x-0 p-4 space-y-1">
+          <div className="absolute bottom-0 inset-x-0 p-5 space-y-1 z-10">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-mono text-cyan-300 font-bold bg-cyan-950/70 border border-cyan-800/50 px-2 py-0.5 rounded">
+              <span className="text-[11px] font-mono text-cyan-300 font-bold bg-cyan-950/80 border border-cyan-800/50 px-2 py-0.5 rounded">
                 SOFTWARE ARCHITECT
               </span>
               <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
@@ -58,7 +73,7 @@ export function ProfilePhoto() {
                 ACTIVE
               </span>
             </div>
-            <h3 className="text-xl font-extrabold text-white tracking-tight">
+            <h3 className="text-2xl font-extrabold text-white tracking-tight">
               Hor Tola
             </h3>
             <p className="text-xs text-slate-300 font-mono">
@@ -68,20 +83,25 @@ export function ProfilePhoto() {
         </div>
 
         {/* Floating Cyberpunk Orbit Badges */}
-        <div className="absolute -top-3 -right-3 px-3 py-1.5 rounded-xl glass-panel border border-cyan-500/40 text-cyan-300 font-mono text-xs shadow-lg animate-float">
+        <div className="absolute -top-3 -left-3 px-3 py-1.5 rounded-xl glass-panel border border-cyan-500/40 text-cyan-300 font-mono text-xs shadow-lg animate-float">
           <span>⚡ Full-Stack & Mobile</span>
         </div>
 
-        <div className="absolute -bottom-3 -left-3 px-3 py-1.5 rounded-xl glass-panel border border-emerald-500/40 text-emerald-300 font-mono text-xs shadow-lg">
+        <div className="absolute -bottom-3 -right-3 px-3 py-1.5 rounded-xl glass-panel border border-emerald-500/40 text-emerald-300 font-mono text-xs shadow-lg">
           <span>🇰🇭 Krong Battambang</span>
         </div>
       </div>
 
-      {/* Helpful Hint beneath image */}
-      <div className="text-center pt-3 text-[11px] font-mono text-slate-500">
-        Tip: Place your photo as <code className="text-cyan-400 font-semibold">public/images/profile.jpg</code> to personalize!
+      {/* Status Bar beneath card */}
+      <div className="flex items-center justify-between pt-3 px-1 text-[11px] font-mono text-slate-400">
+        <span>📸 Photo: <span className="text-cyan-400">{currentPhoto.label}</span></span>
+        <button
+          onClick={handleTogglePhoto}
+          className="text-cyan-400 hover:underline cursor-pointer"
+        >
+          Toggle Angle &rarr;
+        </button>
       </div>
     </div>
   );
 }
-

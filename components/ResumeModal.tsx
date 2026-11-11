@@ -34,19 +34,28 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         </button>
 
         {/* Modal Header */}
-        <div className="border-b border-white/10 pb-4 space-y-2">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/40 px-2.5 py-0.5 rounded">
-              CURRICULUM VITAE
-            </span>
-            <span className="text-xs font-mono text-slate-400">Level 21 • 2026 Edition</span>
+        <div className="border-b border-white/10 pb-4 flex items-center gap-4">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-400 to-emerald-400 p-[1.5px] overflow-hidden flex-shrink-0 shadow-lg shadow-cyan-500/20">
+            <img
+              src="/images/hortola_.jpg"
+              alt="Hor Tola"
+              className="w-full h-full object-cover rounded-[14px]"
+            />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-            Hor Tola — Full-Stack Engineer
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-300 font-mono">
-            Krong Battambang, Cambodia • hortola.dev@gmail.com • NUBB Senior IT Scholar
-          </p>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono text-cyan-400 bg-cyan-950/70 border border-cyan-800/40 px-2.5 py-0.5 rounded">
+                CURRICULUM VITAE
+              </span>
+              <span className="text-xs font-mono text-slate-400">Level 21 • 2026 Edition</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+              Hor Tola — Full-Stack Engineer
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 font-mono">
+              Krong Battambang, Cambodia • hortola.dev@gmail.com • NUBB Senior IT Scholar
+            </p>
+          </div>
         </div>
 
         {/* Executive Summary */}
