@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
+import { TechMarquee } from "@/components/TechMarquee";
 import { SkillsMatrix } from "@/components/SkillsMatrix";
 import { BentoGrid } from "@/components/BentoGrid";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -19,7 +20,10 @@ export default function Home() {
         {/* 1. Hero Section with Cyberpunk Profile Photo */}
         <HeroSection />
 
-        {/* 2. Interactive Skills Matrix with Category Tabs */}
+        {/* 2. Acquired Languages & Frameworks Infinite Marquee */}
+        <TechMarquee />
+
+        {/* 3. Interactive Skills Matrix with Category Tabs */}
         <SkillsMatrix />
 
         {/* 3. Bento Grid Overview */}

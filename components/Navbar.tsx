@@ -76,6 +76,13 @@ export function Navbar() {
               About
             </a>
             <a
+              href="#languages"
+              onClick={() => soundFx.playClick()}
+              className="px-3 py-1.5 rounded-lg hover:text-cyan-400 hover:bg-white/5 transition"
+            >
+              Languages
+            </a>
+            <a
               href="#skills"
               onClick={() => soundFx.playClick()}
               className="px-3 py-1.5 rounded-lg hover:text-cyan-400 hover:bg-white/5 transition"
@@ -191,6 +198,7 @@ export function Navbar() {
             >
               {[
                 { href: "#about", label: "About" },
+                { href: "#languages", label: "Languages & Frameworks" },
                 { href: "#skills", label: "Skills Matrix" },
                 { href: "#projects", label: "Projects" },
                 { href: "#terminal-section", label: "Terminal" },

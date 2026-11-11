@@ -3,6 +3,23 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { soundFx } from "@/lib/sound";
+import {
+  PhpIcon,
+  LaravelIcon,
+  PythonIcon,
+  FlutterIcon,
+  DartIcon,
+  JavaScriptIcon,
+  TypeScriptIcon,
+  Html5Icon,
+  Css3Icon,
+  TailwindIcon,
+  MySqlIcon,
+  DockerIcon,
+  GitIcon,
+  LinuxIcon,
+  FigmaIcon,
+} from "./icons/TechIcons";
 
 interface SkillItem {
   name: string;
@@ -10,6 +27,7 @@ interface SkillItem {
   level: number;
   highlight: string;
   desc: string;
+  icon?: React.ReactNode;
 }
 
 const operationalSkills: SkillItem[] = [
@@ -20,6 +38,12 @@ const operationalSkills: SkillItem[] = [
     level: 95,
     highlight: "Core Backend",
     desc: "MVC architecture, Eloquent ORM, REST API engineering, authentication systems.",
+    icon: (
+      <div className="flex items-center gap-1.5">
+        <PhpIcon className="w-5 h-5" size={20} />
+        <LaravelIcon className="w-5 h-5" size={20} />
+      </div>
+    ),
   },
   {
     name: "Python",
@@ -27,6 +51,7 @@ const operationalSkills: SkillItem[] = [
     level: 82,
     highlight: "Logic & Automation",
     desc: "Backend scripting, procedural logic, and automated data pipelines.",
+    icon: <PythonIcon className="w-5 h-5" size={20} />,
   },
   {
     name: "MySQL & Relational Schema",
@@ -34,6 +59,7 @@ const operationalSkills: SkillItem[] = [
     level: 90,
     highlight: "Database",
     desc: "Relational database schema modeling, indexing, foreign keys, TablePlus.",
+    icon: <MySqlIcon className="w-5 h-5" size={20} />,
   },
   {
     name: "Linux Server Administration",
@@ -41,6 +67,7 @@ const operationalSkills: SkillItem[] = [
     level: 80,
     highlight: "Systems",
     desc: "Ubuntu/Debian environment configuration, shell navigation, service monitoring.",
+    icon: <LinuxIcon className="w-5 h-5" size={20} />,
   },
 
   // Mobile & Frontend
@@ -50,6 +77,12 @@ const operationalSkills: SkillItem[] = [
     level: 92,
     highlight: "Cross-Platform",
     desc: "Responsive UI state management, cross-platform compilation for iOS & Android.",
+    icon: (
+      <div className="flex items-center gap-1.5">
+        <FlutterIcon className="w-5 h-5" size={20} />
+        <DartIcon className="w-5 h-5" size={20} />
+      </div>
+    ),
   },
   {
     name: "Modern HTML5 & CSS3",
@@ -57,6 +90,12 @@ const operationalSkills: SkillItem[] = [
     level: 95,
     highlight: "Web Standard",
     desc: "Flexbox, CSS Grid layouts, glassmorphic interfaces, responsive design principles.",
+    icon: (
+      <div className="flex items-center gap-1.5">
+        <Html5Icon className="w-5 h-5" size={20} />
+        <Css3Icon className="w-5 h-5" size={20} />
+      </div>
+    ),
   },
   {
     name: "JavaScript & TypeScript",
@@ -64,6 +103,12 @@ const operationalSkills: SkillItem[] = [
     level: 88,
     highlight: "Frontend Logic",
     desc: "DOM manipulation, asynchronous event handling, type-safe Next.js & React components.",
+    icon: (
+      <div className="flex items-center gap-1.5">
+        <JavaScriptIcon className="w-5 h-5" size={20} />
+        <TypeScriptIcon className="w-5 h-5" size={20} />
+      </div>
+    ),
   },
   {
     name: "Tailwind CSS",
@@ -71,6 +116,7 @@ const operationalSkills: SkillItem[] = [
     level: 94,
     highlight: "Styling System",
     desc: "Utility-first CSS architecture, custom theme extensions, micro-animations.",
+    icon: <TailwindIcon className="w-5 h-5" size={20} />,
   },
 
   // Developer Toolchain & Environment
@@ -80,6 +126,7 @@ const operationalSkills: SkillItem[] = [
     level: 95,
     highlight: "Battlestation",
     desc: "16\" MacBook Pro M1 Max (32GB RAM, 1TB SSD), Homebrew, Warp terminal, zsh workflows.",
+    icon: <span className="text-slate-200 text-lg font-bold"></span>,
   },
   {
     name: "Docker Containerization",
@@ -87,6 +134,7 @@ const operationalSkills: SkillItem[] = [
     level: 85,
     highlight: "DevOps",
     desc: "Multi-stage Dockerfiles, docker-compose local microservices staging.",
+    icon: <DockerIcon className="w-5 h-5" size={20} />,
   },
   {
     name: "ServBay & TablePlus",
@@ -94,6 +142,7 @@ const operationalSkills: SkillItem[] = [
     level: 92,
     highlight: "Local Staging",
     desc: "High-performance PHP/MySQL local staging, visual database inspection.",
+    icon: <MySqlIcon className="w-5 h-5" size={20} />,
   },
   {
     name: "VS Code, Android Studio & Xcode",
@@ -101,6 +150,7 @@ const operationalSkills: SkillItem[] = [
     level: 90,
     highlight: "IDE Arsenal",
     desc: "Cross-platform mobile simulators, Flutter debugging, native toolchain compilation.",
+    icon: <span className="text-base">💻</span>,
   },
   {
     name: "Git & Wireshark",
@@ -108,6 +158,7 @@ const operationalSkills: SkillItem[] = [
     level: 88,
     highlight: "Version & Network",
     desc: "Branching workflows, GitHub Actions CI/CD, network packet inspection.",
+    icon: <GitIcon className="w-5 h-5" size={20} />,
   },
 
   // Design & Digital Productivity
@@ -117,6 +168,7 @@ const operationalSkills: SkillItem[] = [
     level: 90,
     highlight: "Product Design",
     desc: "Wireframing, interactive design system prototypes, user flow modeling.",
+    icon: <FigmaIcon className="w-5 h-5" size={20} />,
   },
   {
     name: "Canva & Brand Collateral",
@@ -124,6 +176,7 @@ const operationalSkills: SkillItem[] = [
     level: 92,
     highlight: "Visual Identity",
     desc: "Pitch slide decks, educational curriculum graphics, team visual assets.",
+    icon: <span className="text-cyan-400 font-bold font-mono text-sm">C</span>,
   },
   {
     name: "Foundational AI & LLM Tools",
@@ -131,6 +184,7 @@ const operationalSkills: SkillItem[] = [
     level: 90,
     highlight: "AI Productivity",
     desc: "Prompt engineering, Gemini / OpenAI API workflows, curriculum instruction for youth.",
+    icon: <span className="text-base">✨</span>,
   },
   {
     name: "Google Workspace & MS 365",
@@ -138,6 +192,7 @@ const operationalSkills: SkillItem[] = [
     level: 94,
     highlight: "Operations",
     desc: "Collaborative sheets, automated form responses, institutional workflows.",
+    icon: <span className="text-base">📊</span>,
   },
 ];
 
@@ -228,10 +283,17 @@ export function SkillsMatrix() {
                 </span>
               </div>
 
-              <div>
-                <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition">
-                  {skill.name}
-                </h3>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-3">
+                  {skill.icon && (
+                    <div className="p-2 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 group-hover:border-cyan-500/30 transition-all flex items-center justify-center flex-shrink-0">
+                      {skill.icon}
+                    </div>
+                  )}
+                  <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition">
+                    {skill.name}
+                  </h3>
+                </div>
                 <p className="text-xs text-slate-300 mt-1 leading-relaxed">
                   {skill.desc}
                 </p>
