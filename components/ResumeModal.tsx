@@ -135,3 +135,4 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     </div>
   );
 }
+

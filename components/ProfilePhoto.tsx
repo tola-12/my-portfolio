@@ -4,17 +4,17 @@ import React, { useState } from "react";
 import { soundFx } from "@/lib/sound";
 
 export function ProfilePhoto() {
-  const [imgSrc, setImgSrc] = useState<string>("/images/profile.jpg");
+  const [imgSrc, setImgSrc] = useState<string>("/images/hortola_.jpg");
   const [hasError, setHasError] = useState(false);
 
   const handleError = () => {
     if (!hasError) {
       // Try profile.png next, otherwise fallback to SVG placeholder
       if (imgSrc.endsWith(".jpg")) {
-        setImgSrc("/images/profile.png");
+        setImgSrc("/images/hortola_.jpg");
       } else {
         setHasError(true);
-        setImgSrc("/images/profile-placeholder.svg");
+        setImgSrc("images/hortola_.jpg");
       }
     }
   };
@@ -84,3 +84,4 @@ export function ProfilePhoto() {
     </div>
   );
 }
+

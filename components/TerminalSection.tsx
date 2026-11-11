@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import confetti from "canvas-confetti";
 import { useToast } from "./ToastProvider";
+import { soundFx } from "@/lib/sound";
 
 interface LogEntry {
   type: "echo" | "response" | "system";
@@ -13,10 +14,13 @@ const commandsMap: Record<string, string | (() => string)> = {
   help: `Available commands:
 • <span class="text-cyan-300">skills</span>   : Output core languages, frameworks & platforms
 • <span class="text-cyan-300">projects</span> : Show key production systems & GitHub builds
+• <span class="text-cyan-300">github</span>   : Live repository metrics & open-source summary
 • <span class="text-cyan-300">awards</span>   : Grant wins, A-SASSY, & UNIPRENEUR awards
 • <span class="text-cyan-300">specs</span>    : Developer machine hardware & setup
 • <span class="text-cyan-300">whoami</span>   : Bio and education credentials
 • <span class="text-cyan-300">stack</span>    : Full-stack Next.js App Router + Prisma runtime
+• <span class="text-cyan-300">sound</span>    : Toggle interface audio synthesizer
+• <span class="text-cyan-300">date</span>     : Current Cambodia local time (ICT / UTC+7)
 • <span class="text-cyan-300">party</span>    : Fire birthday confetti celebratory burst
 • <span class="text-cyan-300">clear</span>    : Wipe the terminal buffer`,
 
@@ -30,6 +34,11 @@ DevOps   : Docker, Git, GitHub Actions, Linux (Ubuntu/Debian), ServBay`,
 2. FLC Attendance PWA - Automated QR check-in & student ops portal
 3. Campus Mobile Hub - Cross-platform Flutter course assistant
 4. Power Platform Bots - Automated reporting for educational institutions`,
+
+  github: `Profile : github.com/hortola
+Repos   : 12+ public repositories
+Focus   : Laravel REST APIs, Flutter cross-platform clients, Next.js web applications
+Status  : Open for open-source contributions & collaborations`,
 
   awards: `• 1st Place - DYNAMIC & UNIPRENEUR Season 2 (Grow2Growth)
 • €4,000 Grant Recipient - A-SASSY Youth-Led Innovation Fund
@@ -52,6 +61,17 @@ Rendering    : Server Components & Streaming SSR
 Data Layer   : Prisma ORM with SQLite / PostgreSQL
 Styling      : Tailwind CSS (Compiled PostCSS, zero CDN)
 Deployment   : Vercel / Railway / Docker containerized`,
+
+  date: () => {
+    return `<span class="text-cyan-300 font-mono">Current Time: ${new Date().toLocaleString("en-US", { timeZone: "Asia/Phnom_Penh" })} (ICT / Cambodia Time)</span>`;
+  },
+
+  sound: () => {
+    const isEnabled = soundFx.toggle();
+    return isEnabled
+      ? `<span class="text-emerald-400 font-bold">🔊 Interface sound effects enabled!</span>`
+      : `<span class="text-amber-400 font-bold">🔇 Interface sound effects muted.</span>`;
+  },
 };
 
 export function TerminalSection() {
@@ -59,7 +79,7 @@ export function TerminalSection() {
   const [logs, setLogs] = useState<LogEntry[]>([
     {
       type: "system",
-      text: `<span class="text-emerald-400 font-bold">Welcome to Hor Tola's Dev Console v2.6 [Full-Stack Next.js Edition].</span><br /><span class="text-slate-400">Type <span class="text-cyan-400 font-bold">help</span> to view commands, or try <span class="text-cyan-400 font-bold">stack</span>, <span class="text-cyan-400 font-bold">projects</span>, <span class="text-cyan-400 font-bold">skills</span>, <span class="text-cyan-400 font-bold">specs</span>, or <span class="text-cyan-400 font-bold">party</span>.</span>`,
+      text: `<span class="text-emerald-400 font-bold">Welcome to Hor Tola's Dev Console v2.6 [Full-Stack Next.js Edition].</span><br /><span class="text-slate-400">Type <span class="text-cyan-400 font-bold">help</span> to view commands, or try <span class="text-cyan-400 font-bold">stack</span>, <span class="text-cyan-400 font-bold">projects</span>, <span class="text-cyan-400 font-bold">github</span>, <span class="text-cyan-400 font-bold">sound</span>, or <span class="text-cyan-400 font-bold">party</span>.</span>`,
     },
   ]);
   const [inputVal, setInputVal] = useState("");
@@ -72,6 +92,7 @@ export function TerminalSection() {
   }, [logs]);
 
   const handleCommand = () => {
+    soundFx.playClick();
     const raw = inputVal.trim();
     if (!raw) return;
 
@@ -92,6 +113,7 @@ export function TerminalSection() {
     ];
 
     if (cmd === "party") {
+      soundFx.playCelebration();
       try {
         confetti({
           particleCount: 100,
@@ -136,7 +158,16 @@ export function TerminalSection() {
   }
 
   return (
-    <section id="terminal-section" className="scroll-mt-24">
+    <section id="terminal-section" className="space-y-6 scroll-mt-24">
+      <div>
+        <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
+          Command Interface
+        </h2>
+        <p className="text-2xl sm:text-3xl font-extrabold text-white">
+          Interactive Developer Console
+        </p>
+      </div>
+
       <div className="rounded-2xl border border-white/10 bg-[#0B0D13] shadow-2xl overflow-hidden font-mono text-sm">
         {/* Terminal Header Bar */}
         <div className="bg-[#121620] px-4 py-3 border-b border-white/10 flex items-center justify-between">
@@ -193,4 +224,3 @@ export function TerminalSection() {
     </section>
   );
 }
-
