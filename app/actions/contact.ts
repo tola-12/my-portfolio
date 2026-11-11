@@ -14,6 +14,12 @@ export async function submitContactMessage(
   prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  // Anti-bot honeypot verification
+  const gotcha = formData.get("_gotcha")?.toString().trim();
+  if (gotcha) {
+    return { success: true, message: "Transmission received." };
+  }
+
   const name = formData.get("name")?.toString().trim();
   const email = formData.get("email")?.toString().trim();
   const message = formData.get("message")?.toString().trim();

@@ -3,32 +3,44 @@ import React from "react";
 export function MilestonesSection() {
   const milestones = [
     {
-      year: "2026 • Present",
-      title: "Year 4 Senior IT Scholar & Thesis — NUBB",
-      desc: "National University of Battambang (NUBB). Completing final capstone research, leading software architecture modules, and preparing for graduation.",
+      period: "2026 (Q4) • Milestone Year",
+      title: "Level 21 & Undergraduate Thesis — NUBB",
+      desc: "Turned 21; expanded into UI/UX product design in Figma; advancing final-year undergraduate thesis research in Information Technology at National University of Battambang.",
       color: "bg-cyan-400",
       textColor: "text-cyan-400",
+      badge: "Thesis & UI/UX",
     },
     {
-      year: "2025 • Grant Winner",
-      title: "A-SASSY Youth-Led Fund Recipient (€4,000)",
-      desc: "Awarded competitive seed funding to scale digital agriculture tooling and support rural youth innovation in Northwest Cambodia.",
+      period: "2026 (Q3) • Grant Recognition",
+      title: "Awarded €4,000 A-SASSY Youth-Led Initiative Grant",
+      desc: "Secured competitive seed funding to pilot seed traceability and pure lettuce seed production in Takram village, empowering local agricultural value chains.",
       color: "bg-emerald-400",
       textColor: "text-emerald-400",
+      badge: "€4k Grant Winner",
     },
     {
-      year: "2024 • Competition Champion",
+      period: "2026 (Q2) • Startup Competitions",
       title: "1st Place in DYNAMIC & UNIPRENEUR Season 2",
-      desc: "Co-founded Grow2Growth, pitching and demonstrating practical technological innovation for local agricultural value chains.",
+      desc: "Captured 1st Place across regional startup competitions with Grow2Growth; served as IT & Digital Media Lead for Team ខ្មែរដាំ ខ្មែរច្នៃ (Banana Peel Upcycling Initiative).",
       color: "bg-teal-400",
       textColor: "text-teal-400",
+      badge: "1st Place Champion",
     },
     {
-      year: "2023 - Present",
-      title: "Computer Trainer & ICT Mentor — Future Leader Center",
-      desc: "Teaching computer basics, Microsoft 365, Google Workspace, modern AI tools, and introductory coding to over 100 students.",
+      period: "2025–2026 • Community Impact",
+      title: "ICT Curriculum Coordinator & Trainer — Future Leader Center",
+      desc: "Designed and delivered practical curricula covering computer fundamentals, office productivity, digital design in Canva, and AI tools for over 100+ aspiring youth at Puthi Komar Organization.",
       color: "bg-blue-400",
       textColor: "text-blue-400",
+      badge: "100+ Youth Trained",
+    },
+    {
+      period: "2023–2024 • Foundational Growth",
+      title: "Intensive Tech & English Development — TASSEL & NUBB",
+      desc: "Completed foundational digital literacy, soft skills, and advanced English coursework through TASSEL and Future Leader Center; laid the architectural groundwork for IT major at NUBB.",
+      color: "bg-purple-400",
+      textColor: "text-purple-400",
+      badge: "Foundational Core",
     },
   ];
 
@@ -36,10 +48,10 @@ export function MilestonesSection() {
     <section id="milestones" className="space-y-6 scroll-mt-24">
       <div>
         <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
-          Growth Journey
+          Chronological Milestones
         </h2>
         <p className="text-2xl sm:text-3xl font-extrabold text-white">
-          Key Milestones & Education
+          Growth Journey & Achievements Timeline
         </p>
       </div>
 
@@ -49,10 +61,19 @@ export function MilestonesSection() {
             <div
               className={`absolute -left-[33px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full ${m.color} ring-4 ring-brand-dark`}
             />
-            <div className="space-y-1">
-              <span className={`text-xs font-mono ${m.textColor}`}>{m.year}</span>
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2">
+                <span className={`text-xs font-mono font-semibold ${m.textColor}`}>
+                  {m.period}
+                </span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
+                  {m.badge}
+                </span>
+              </div>
               <h3 className="text-lg font-bold text-white">{m.title}</h3>
-              <p className="text-sm text-slate-300">{m.desc}</p>
+              <p className="text-sm text-slate-300 leading-relaxed max-w-3xl">
+                {m.desc}
+              </p>
             </div>
           </div>
         ))}
@@ -60,4 +81,3 @@ export function MilestonesSection() {
     </section>
   );
 }
-

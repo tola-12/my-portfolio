@@ -8,7 +8,7 @@ export function BentoGrid() {
           Bento Overview
         </h2>
         <p className="text-2xl sm:text-3xl font-extrabold text-white">
-          Full-Stack Capability & Impact
+          Full-Stack Capability & Community Impact
         </p>
       </div>
 
@@ -23,8 +23,8 @@ export function BentoGrid() {
               <span className="text-xs text-slate-400 font-mono">Modern Full-Stack</span>
             </div>
             <h3 className="text-xl font-bold text-white">Architecture & Tooling</h3>
-            <p className="text-sm text-slate-300">
-              Specialized in scalable backend architectures with Laravel/Node and sleek mobile cross-platform systems using Flutter & Dart.
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Specialized in scalable backend architectures with Laravel and sleek mobile cross-platform systems using Flutter & Dart. Paired with modern Next.js and Prisma ORM.
             </p>
           </div>
 
@@ -40,7 +40,7 @@ export function BentoGrid() {
               Next.js & React
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-emerald-300">
-              PostgreSQL & Prisma
+              PostgreSQL & MySQL
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-200">
               Docker & ServBay
@@ -62,20 +62,19 @@ export function BentoGrid() {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-1 rounded-md">
-                Grant & 1st Place
+                €4,000 Grant & 1st Place
               </span>
               <span className="text-xs font-mono text-emerald-300">
-                DYNAMIC & UNIPRENEUR
+                DYNAMIC & UNIPRENEUR S2
               </span>
             </div>
             <h3 className="text-xl font-bold text-white">Grow2Growth AgriTech</h3>
-            <p className="text-sm text-slate-300">
-              Co-founded and engineered seed traceability for rice varieties. Won{" "}
-              <strong className="text-white">€4,000 A-SASSY Youth-Led Fund</strong> to empower local farmers and guarantee seed purity.
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Localized seed production and traceability package designed to ensure seed quality verification from cultivation in Takram village to final harvest. Won <strong className="text-white">€4,000 A-SASSY Youth-Led Fund</strong> to eliminate unpredictable crop yields.
             </p>
           </div>
           <div className="pt-6 flex items-center justify-between text-xs font-mono text-slate-400">
-            <span>Focus: Seed Quality & Traceability</span>
+            <span>Pilot: Takram Village Cultivation</span>
             <span className="text-emerald-400 font-semibold">1st Place Winner</span>
           </div>
         </div>
@@ -84,11 +83,11 @@ export function BentoGrid() {
         <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between">
           <div className="space-y-3">
             <span className="text-xs font-mono text-blue-400 bg-blue-950/60 border border-blue-800/40 px-2.5 py-1 rounded-md">
-              FLC Leadership
+              Puthi Komar Organization
             </span>
-            <h3 className="text-lg font-bold text-white">Computer Trainer</h3>
-            <p className="text-sm text-slate-300">
-              Teaching digital skills, modern AI productivity workflows, and office suites to empower underprivileged youth in Battambang.
+            <h3 className="text-lg font-bold text-white">ICT Curriculum Trainer</h3>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Teaching computer fundamentals, office suites, Canva design, and foundational AI tools to empower underprivileged youth at Future Leader Center.
             </p>
           </div>
           <div className="pt-4 text-xs font-mono text-cyan-300">
@@ -100,11 +99,11 @@ export function BentoGrid() {
         <div className="glass-panel rounded-2xl p-6 flex flex-col justify-between">
           <div className="space-y-3">
             <span className="text-xs font-mono text-purple-400 bg-purple-950/60 border border-purple-800/40 px-2.5 py-1 rounded-md">
-              Automation
+              Operations PWA
             </span>
-            <h3 className="text-lg font-bold text-white">FLC Ops PWA</h3>
-            <p className="text-sm text-slate-300">
-              Automated institutional attendance and record management using Laravel PWA with QR check-in & Power Platform tools.
+            <h3 className="text-lg font-bold text-white">FLC Staff QR Attendance</h3>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Progressive Web App enabling automated check-ins via dynamic QR code verification, role-based supervisor access, and rapid record exports.
             </p>
           </div>
           <div className="pt-4 text-xs font-mono text-purple-300">
@@ -117,13 +116,13 @@ export function BentoGrid() {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono text-amber-400 bg-amber-950/60 border border-amber-800/40 px-2.5 py-1 rounded-md">
-                Battlestation
+                Battlestation Rig
               </span>
-              <span className="text-xs font-mono text-slate-400">Always Optimized</span>
+              <span className="text-xs font-mono text-slate-400">Apple Silicon</span>
             </div>
             <h3 className="text-lg font-bold text-white">16" MacBook Pro (M1 Max)</h3>
-            <p className="text-sm text-slate-300">
-              High-performance workstation running 32GB Unified RAM and 1TB NVMe storage. Paired with Warp Terminal, VS Code, and ServBay local staging.
+            <p className="text-sm text-slate-300 leading-relaxed">
+              High-performance workstation running 32GB Unified RAM and 1TB NVMe storage. Paired with Warp Terminal, VS Code, ServBay, TablePlus, and Docker.
             </p>
           </div>
           <div className="grid grid-cols-3 gap-2 pt-4 text-center font-mono text-xs">
@@ -145,4 +144,3 @@ export function BentoGrid() {
     </section>
   );
 }
-

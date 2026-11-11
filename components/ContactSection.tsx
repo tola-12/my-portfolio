@@ -3,6 +3,7 @@
 import React, { useState, useTransition } from "react";
 import { submitContactMessage } from "@/app/actions/contact";
 import { useToast } from "./ToastProvider";
+import { soundFx } from "@/lib/sound";
 
 export function ContactSection() {
   const { showToast } = useToast();
@@ -11,6 +12,7 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    soundFx.playClick();
     setErrorMessage(null);
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -21,6 +23,7 @@ export function ContactSection() {
         setErrorMessage(result.error);
         showToast(`❌ ${result.error}`);
       } else if (result.success && result.message) {
+        soundFx.playCelebration();
         showToast(result.message);
         form.reset();
       }
@@ -28,6 +31,7 @@ export function ContactSection() {
   };
 
   const copyToClipboard = (text: string, customMessage: string) => {
+    soundFx.playClick();
     navigator.clipboard.writeText(text);
     showToast(customMessage);
   };
@@ -42,45 +46,75 @@ export function ContactSection() {
               <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
                 Let’s Collaborate
               </span>
-              <h2 className="text-3xl font-extrabold text-white">
-                Have a project or want to build together?
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+                Have an ambitious project or want to build together?
               </h2>
               <p className="text-slate-300 text-sm leading-relaxed">
-                Available for impactful freelance software development, mobile apps, educational technology projects, and tech consultations.
+                Available for impactful freelance software development, cross-platform mobile apps, institutional automation, and tech mentorship consultations.
               </p>
             </div>
 
             {/* Contact Handles */}
             <div className="space-y-3 font-mono text-xs">
-              <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+              <div className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5">
                 <span className="text-slate-400">Location:</span>
-                <span className="text-white">Krong Battambang, Cambodia</span>
+                <span className="text-white">Krong Battambang, Cambodia 🇰🇭</span>
               </div>
+
               <div
-                className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/40 transition"
-                onClick={() => copyToClipboard("hortola.dev@gmail.com", "Email copied!")}
+                className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/40 transition group"
+                onClick={() => copyToClipboard("hortola.dev@gmail.com", "Email copied to clipboard!")}
               >
                 <span className="text-slate-400">Email:</span>
-                <span className="text-cyan-400 font-semibold">
+                <span className="text-cyan-400 font-semibold group-hover:underline">
                   hortola.dev@gmail.com (Click to copy)
                 </span>
               </div>
-              <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
-                <span className="text-slate-400">Telegram / Phone:</span>
-                <span className="text-slate-200">Available upon request</span>
+
+              <div className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5">
+                <span className="text-slate-400">Direct Chat:</span>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://t.me/hortola"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => soundFx.playClick()}
+                    className="text-cyan-400 hover:underline font-semibold"
+                  >
+                    Telegram &rarr;
+                  </a>
+                  <span className="text-slate-500">•</span>
+                  <a
+                    href="mailto:hortola.dev@gmail.com"
+                    onClick={() => soundFx.playClick()}
+                    className="text-emerald-400 hover:underline font-semibold"
+                  >
+                    Send Email &rarr;
+                  </a>
+                </div>
               </div>
             </div>
 
             <div className="pt-2">
-              <div className="text-xs font-mono text-slate-400">Milestone status:</div>
-              <div className="text-sm text-emerald-400 font-mono mt-1">
-                Level 21 unlocked • Ready for new adventures.
+              <div className="text-xs font-mono text-slate-400">Current Status:</div>
+              <div className="text-sm text-emerald-400 font-mono mt-1 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Open for freelance & full-stack roles • Level 21 Edition</span>
               </div>
             </div>
           </div>
 
-          {/* Right Interactive Form (Connected to Server Action & Telegram Webhook) */}
+          {/* Right Interactive Form (Connected to Server Action, Prisma & Telegram Webhook) */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot anti-spam */}
+            <input
+              type="text"
+              name="_gotcha"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+            />
+
             {errorMessage && (
               <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono">
                 {errorMessage}
@@ -132,7 +166,7 @@ export function ContactSection() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 text-brand-dark font-bold text-sm tracking-tight hover:opacity-95 transition shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 disabled:opacity-75 cursor-pointer"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 text-brand-dark font-bold text-sm tracking-tight hover:opacity-95 transition shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 disabled:opacity-75 cursor-pointer"
             >
               {isPending ? (
                 <>
@@ -143,7 +177,7 @@ export function ContactSection() {
                   <span>Transmitting...</span>
                 </>
               ) : (
-                <span>Transmit Message (Saved to DB + Telegram)</span>
+                <span>Transmit Message (Saved to DB + Instant Telegram Alert)</span>
               )}
             </button>
           </form>
@@ -152,4 +186,3 @@ export function ContactSection() {
     </section>
   );
 }
-

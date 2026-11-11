@@ -37,7 +37,7 @@ export function HeroSection() {
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-slate-300 font-light leading-relaxed pt-2">
-                I’m <strong className="text-white font-semibold">Hor Tola</strong>, a Full-Stack Software Developer, Mobile Engineer, and ICT Trainer. 4th-year IT Scholar at National University of Battambang (NUBB) and Computer Trainer at Future Leader Center (FLC).
+                I am a 4th-year Information Technology scholar at <strong>National University of Battambang (NUBB)</strong>, software developer, and <strong>ICT Curriculum Coordinator & Trainer</strong> at Future Leader Center (Puthi Komar Organization). I bridge backend logic (<span className="text-cyan-300 font-medium">Laravel, Python</span>) and mobile interfaces (<span className="text-emerald-300 font-medium">Flutter</span>) with community-driven solutions.
               </p>
             </div>
 
@@ -84,7 +84,7 @@ export function HeroSection() {
                 className="px-4 py-3 rounded-xl glass-panel text-cyan-300 font-mono text-sm hover:text-white border border-cyan-500/30 transition flex items-center gap-2"
               >
                 <span>📄</span>
-                <span>View Resume</span>
+                <span>View Full CV</span>
               </button>
 
               <a

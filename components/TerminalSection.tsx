@@ -12,23 +12,58 @@ interface LogEntry {
 
 const commandsMap: Record<string, string | (() => string)> = {
   help: `Available commands:
-• <span class="text-cyan-300">skills</span>   : Output core languages, frameworks & platforms
-• <span class="text-cyan-300">projects</span> : Show key production systems & GitHub builds
-• <span class="text-cyan-300">github</span>   : Live repository metrics & open-source summary
-• <span class="text-cyan-300">awards</span>   : Grant wins, A-SASSY, & UNIPRENEUR awards
-• <span class="text-cyan-300">specs</span>    : Developer machine hardware & setup
-• <span class="text-cyan-300">whoami</span>   : Bio and education credentials
-• <span class="text-cyan-300">stack</span>    : Full-stack Next.js App Router + Prisma runtime
-• <span class="text-cyan-300">sound</span>    : Toggle interface audio synthesizer
-• <span class="text-cyan-300">date</span>     : Current Cambodia local time (ICT / UTC+7)
-• <span class="text-cyan-300">party</span>    : Fire birthday confetti celebratory burst
-• <span class="text-cyan-300">clear</span>    : Wipe the terminal buffer`,
+• <span class="text-cyan-300">experience</span> : Leadership & instruction roles at FLC & NUBB
+• <span class="text-cyan-300">education</span>  : B.S. in IT journey at NUBB & English certifications
+• <span class="text-cyan-300">projects</span>   : Flagship builds (Grow2Growth, FLC PWA, Banana Peel)
+• <span class="text-cyan-300">skills</span>     : Core operational domains, frameworks & tooling
+• <span class="text-cyan-300">grant</span>      : €4,000 A-SASSY Youth-Led Fund mission objectives
+• <span class="text-cyan-300">hardware</span>   : Host specs: MacBook Pro 16" (M1 Max, 32GB RAM)
+• <span class="text-cyan-300">quote</span>      : Personal engineering mantra & philosophy
+• <span class="text-cyan-300">github</span>     : Live repository metrics & open-source summary
+• <span class="text-cyan-300">awards</span>     : Grant wins, A-SASSY, & UNIPRENEUR awards
+• <span class="text-cyan-300">whoami</span>     : Bio, credentials & Battambang roots
+• <span class="text-cyan-300">sound</span>      : Toggle interface audio synthesizer
+• <span class="text-cyan-300">party</span>      : Fire birthday confetti celebratory burst
+• <span class="text-cyan-300">clear</span>      : Wipe the terminal buffer`,
 
-  skills: `Frontend : Tailwind CSS, React, Next.js, Responsive Web Design, TypeScript
-Backend  : Laravel (PHP), Node.js, Python, REST APIs, Server Actions
-Mobile   : Flutter, Dart, Cross-Platform Architecture
-Database : PostgreSQL, SQLite, MySQL, Prisma ORM, TablePlus
-DevOps   : Docker, Git, GitHub Actions, Linux (Ubuntu/Debian), ServBay`,
+  experience: `1. ICT Curriculum Coordinator & Trainer
+   Future Leader Center (Puthi Komar Organization) | 2025 - Present
+   • Designed & taught curricula: computer fundamentals, office suites, Canva, AI tools.
+   • Mentored cohorts of 100+ youth in digital literacy and tech adoption.
+   • Engineered internal QR attendance PWA to automate center administration.
+
+2. Undergraduate Researcher & Software Builder
+   National University of Battambang (NUBB) | 2022 - Present
+   • Final-year senior scholar focusing on mobile architectures (Flutter) and backend APIs (Laravel).
+   • Winner in regional innovation challenges & collaborative AgriTech ventures.
+
+3. IT & Digital Media Lead
+   Team ខ្មែរដាំ ខ្មែរច្នៃ (UNIPRENEUR Season 2)
+   • Developed digital collateral & pitch presentation for banana peel packaging upcycling.`,
+
+  education: `Degree       : Bachelor of Science in Information Technology (Senior Year)
+Institution  : National University of Battambang (NUBB)
+Focus        : Software Engineering, Mobile Architecture, Database Systems
+Languages    : Khmer (Native), English (Advanced Professional via TASSEL & FLC)`,
+
+  hardware: `Host    : Apple MacBook Pro 16-inch
+Chip    : Apple M1 Max (High-Core GPU & CPU)
+Memory  : 32 GB Unified RAM
+Storage : 1 TB Fast NVMe SSD
+Display : Liquid Retina XDR (120Hz ProMotion)
+Tools   : VS Code, Android Studio, Xcode, Warp Terminal, TablePlus, ServBay`,
+
+  grant: `Grant Name : A-SASSY Youth-Led Initiative Grant
+Funding    : €4,000 Competitive Award
+Objective  : Pilot localized lettuce seed production and traceability package in Takram village.
+Impact     : Guarantee seed quality and provenance to eliminate unpredictable crop yields for farmers.`,
+
+  quote: `"Based in Battambang, Cambodia, I bridge backend logic (Laravel, Python) and mobile interfaces (Flutter) with community-driven solutions—from digital attendance platforms for non-profit education centers to seed traceability ventures that empower local agriculture."`,
+
+  skills: `Backend & Systems : PHP / Laravel (MVC, Eloquent, REST APIs), Python, MySQL, Linux
+Mobile & Frontend : Flutter & Dart (Cross-Platform), Next.js, React, Tailwind CSS, TypeScript
+Developer Tooling : macOS M1 Max, Docker, ServBay, TablePlus, VS Code, Git, Wireshark
+Design & AI       : Figma UI/UX, Canva, Google Workspace, Microsoft 365, LLM Prompting`,
 
   projects: `1. Grow2Growth - Agricultural rice seed traceability platform (Award winner)
 2. FLC Attendance PWA - Automated QR check-in & student ops portal

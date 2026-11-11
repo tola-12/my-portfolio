@@ -5,138 +5,160 @@ import { soundFx } from "@/lib/sound";
 
 interface SkillItem {
   name: string;
-  category: "backend" | "frontend" | "mobile" | "database" | "ai";
+  domain: "backend" | "mobile_frontend" | "toolchain" | "design_ai";
   level: number;
   highlight: string;
   desc: string;
 }
 
-const skillsData: SkillItem[] = [
-  // Backend
+const operationalSkills: SkillItem[] = [
+  // Backend & Systems
   {
-    name: "Laravel / PHP",
-    category: "backend",
+    name: "PHP & Laravel",
+    domain: "backend",
     level: 95,
-    highlight: "Primary Core",
-    desc: "RESTful APIs, Sanctum, Eloquent, Service Patterns, Queues & Events.",
+    highlight: "Core Backend",
+    desc: "MVC architecture, Eloquent ORM, REST API engineering, authentication systems.",
   },
   {
     name: "Python",
-    category: "backend",
-    level: 80,
-    highlight: "Data & Scripts",
-    desc: "Automation scripts, data manipulation, machine learning workflows.",
+    domain: "backend",
+    level: 82,
+    highlight: "Logic & Automation",
+    desc: "Backend scripting, procedural logic, and automated data pipelines.",
   },
   {
-    name: "REST APIs & Microservices",
-    category: "backend",
+    name: "MySQL & Relational Schema",
+    domain: "backend",
     level: 90,
-    highlight: "Architecture",
-    desc: "JWT Auth, Rate Limiting, API Versioning, Webhooks & Third-party integrations.",
+    highlight: "Database",
+    desc: "Relational database schema modeling, indexing, foreign keys, TablePlus.",
   },
-  // Mobile
+  {
+    name: "Linux Server Administration",
+    domain: "backend",
+    level: 80,
+    highlight: "Systems",
+    desc: "Ubuntu/Debian environment configuration, shell navigation, service monitoring.",
+  },
+
+  // Mobile & Frontend
   {
     name: "Flutter & Dart",
-    category: "mobile",
-    level: 90,
-    highlight: "Mobile Core",
-    desc: "Cross-platform iOS & Android, offline-first SQLite, Provider & Riverpod.",
+    domain: "mobile_frontend",
+    level: 92,
+    highlight: "Cross-Platform",
+    desc: "Responsive UI state management, cross-platform compilation for iOS & Android.",
   },
   {
-    name: "Mobile UI/UX Design",
-    category: "mobile",
-    level: 85,
-    highlight: "Design to Code",
-    desc: "Material 3, Cupertino, smooth animations, responsive touch interfaces.",
+    name: "Modern HTML5 & CSS3",
+    domain: "mobile_frontend",
+    level: 95,
+    highlight: "Web Standard",
+    desc: "Flexbox, CSS Grid layouts, glassmorphic interfaces, responsive design principles.",
   },
-  // Frontend
   {
-    name: "Next.js & React",
-    category: "frontend",
+    name: "JavaScript & TypeScript",
+    domain: "mobile_frontend",
     level: 88,
-    highlight: "Modern Fullstack",
-    desc: "App Router, Server Actions, Server Components, Streaming SSR.",
+    highlight: "Frontend Logic",
+    desc: "DOM manipulation, asynchronous event handling, type-safe Next.js & React components.",
   },
   {
     name: "Tailwind CSS",
-    category: "frontend",
+    domain: "mobile_frontend",
+    level: 94,
+    highlight: "Styling System",
+    desc: "Utility-first CSS architecture, custom theme extensions, micro-animations.",
+  },
+
+  // Developer Toolchain & Environment
+  {
+    name: "macOS (M1 Max Workstation)",
+    domain: "toolchain",
     level: 95,
-    highlight: "Design System",
-    desc: "Responsive dark modes, glassmorphism, micro-animations, PostCSS pipelines.",
+    highlight: "Battlestation",
+    desc: "16\" MacBook Pro M1 Max (32GB RAM, 1TB SSD), Homebrew, Warp terminal, zsh workflows.",
   },
   {
-    name: "TypeScript & Modern JS",
-    category: "frontend",
-    level: 88,
-    highlight: "Type Safety",
-    desc: "Strict type models, asynchronous flows, DOM APIs, event buses.",
-  },
-  // Database & DevOps
-  {
-    name: "MySQL & PostgreSQL",
-    category: "database",
-    level: 90,
-    highlight: "Relational",
-    desc: "Schema design, indexing, foreign keys, TablePlus & migrations.",
-  },
-  {
-    name: "Prisma ORM",
-    category: "database",
-    level: 88,
-    highlight: "Type-Safe DB",
-    desc: "Declarative schema modeling, atomic transactions, auto-migrations.",
-  },
-  {
-    name: "Docker & Linux CLI",
-    category: "database",
-    level: 82,
-    highlight: "DevOps",
-    desc: "Multi-stage Dockerfiles, Docker Compose, Ubuntu/Debian server administration.",
-  },
-  {
-    name: "Git & GitHub Actions",
-    category: "database",
-    level: 90,
-    highlight: "CI/CD",
-    desc: "Branching strategies, automated build & test workflows, version release tagging.",
-  },
-  // AI & Tools
-  {
-    name: "AI Prompt Engineering & LLM APIs",
-    category: "ai",
-    level: 88,
-    highlight: "Modern Workflow",
-    desc: "Integrating Gemini / OpenAI APIs into web workflows, AI productivity curriculum.",
-  },
-  {
-    name: "Microsoft Power Platform",
-    category: "ai",
+    name: "Docker Containerization",
+    domain: "toolchain",
     level: 85,
-    highlight: "FLC Operations",
-    desc: "Power Automate workflows, institutional attendance triggers & reporting.",
+    highlight: "DevOps",
+    desc: "Multi-stage Dockerfiles, docker-compose local microservices staging.",
+  },
+  {
+    name: "ServBay & TablePlus",
+    domain: "toolchain",
+    level: 92,
+    highlight: "Local Staging",
+    desc: "High-performance PHP/MySQL local staging, visual database inspection.",
+  },
+  {
+    name: "VS Code, Android Studio & Xcode",
+    domain: "toolchain",
+    level: 90,
+    highlight: "IDE Arsenal",
+    desc: "Cross-platform mobile simulators, Flutter debugging, native toolchain compilation.",
+  },
+  {
+    name: "Git & Wireshark",
+    domain: "toolchain",
+    level: 88,
+    highlight: "Version & Network",
+    desc: "Branching workflows, GitHub Actions CI/CD, network packet inspection.",
+  },
+
+  // Design & Digital Productivity
+  {
+    name: "Figma UI/UX",
+    domain: "design_ai",
+    level: 90,
+    highlight: "Product Design",
+    desc: "Wireframing, interactive design system prototypes, user flow modeling.",
+  },
+  {
+    name: "Canva & Brand Collateral",
+    domain: "design_ai",
+    level: 92,
+    highlight: "Visual Identity",
+    desc: "Pitch slide decks, educational curriculum graphics, team visual assets.",
+  },
+  {
+    name: "Foundational AI & LLM Tools",
+    domain: "design_ai",
+    level: 90,
+    highlight: "AI Productivity",
+    desc: "Prompt engineering, Gemini / OpenAI API workflows, curriculum instruction for youth.",
+  },
+  {
+    name: "Google Workspace & MS 365",
+    domain: "design_ai",
+    level: 94,
+    highlight: "Operations",
+    desc: "Collaborative sheets, automated form responses, institutional workflows.",
   },
 ];
 
 export function SkillsMatrix() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [activeDomain, setActiveDomain] = useState<string>("all");
 
-  const categories = [
-    { key: "all", label: "All Weapons" },
-    { key: "backend", label: "Backend & APIs" },
-    { key: "mobile", label: "Mobile / Flutter" },
-    { key: "frontend", label: "Frontend & UI" },
-    { key: "database", label: "Databases & DevOps" },
-    { key: "ai", label: "AI & Automation" },
+  const domains = [
+    { key: "all", label: "All Arsenal" },
+    { key: "backend", label: "Backend & Systems" },
+    { key: "mobile_frontend", label: "Mobile & Frontend" },
+    { key: "toolchain", label: "Toolchain & Environment" },
+    { key: "design_ai", label: "Design & Digital Productivity" },
   ];
 
   const filtered =
-    activeCategory === "all"
-      ? skillsData
-      : skillsData.filter((s) => s.category === activeCategory);
+    activeDomain === "all"
+      ? operationalSkills
+      : operationalSkills.filter((s) => s.domain === activeDomain);
 
   const handleSelect = (key: string) => {
     soundFx.playClick();
-    setActiveCategory(key);
+    setActiveDomain(key);
   };
 
   return (
@@ -144,27 +166,27 @@ export function SkillsMatrix() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <h2 className="text-xs font-mono uppercase tracking-widest text-cyan-400">
-            Technical Proficiency
+            Technical Skill Matrix
           </h2>
           <p className="text-2xl sm:text-3xl font-extrabold text-white">
-            Core Engineering Arsenal
+            Operational Domains & Tooling
           </p>
         </div>
 
-        {/* Category Pills */}
+        {/* Domain Filter Pills */}
         <div className="flex flex-wrap gap-2 text-xs font-mono">
-          {categories.map((cat) => (
+          {domains.map((dom) => (
             <button
-              key={cat.key}
-              onClick={() => handleSelect(cat.key)}
+              key={dom.key}
+              onClick={() => handleSelect(dom.key)}
               onMouseEnter={() => soundFx.playBlip()}
               className={`px-3 py-1.5 rounded-lg transition ${
-                activeCategory === cat.key
+                activeDomain === dom.key
                   ? "bg-cyan-400 text-brand-dark font-bold shadow-lg shadow-cyan-500/20"
                   : "glass-panel text-slate-300 hover:text-white"
               }`}
             >
-              {cat.label}
+              {dom.label}
             </button>
           ))}
         </div>
@@ -209,4 +231,3 @@ export function SkillsMatrix() {
     </section>
   );
 }
-

@@ -64,8 +64,38 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             Executive Summary
           </h3>
           <p className="text-sm text-slate-300 leading-relaxed">
-            Full-Stack Software Engineer and Mobile Application Developer with 3+ years of practical project and training experience. Co-founder of award-winning AgriTech venture <strong>Grow2Growth</strong> (1st Place UNIPRENEUR S2, €4,000 A-SASSY Grant). ICT Computer Trainer at Future Leader Center (FLC) empowering 100+ underprivileged youth.
+            Full-Stack Software Engineer, Mobile Application Developer, and ICT Trainer with 3+ years of practical project and instruction experience. Co-founder of award-winning AgriTech venture <strong>Grow2Growth</strong> (1st Place UNIPRENEUR S2, €4,000 A-SASSY Youth-Led Fund recipient). IT & Digital Media Lead for Team ខ្មែរដាំ ខ្មែរច្នៃ.
           </p>
+        </div>
+
+        {/* Experience & Leadership */}
+        <div className="space-y-2.5">
+          <h3 className="text-xs font-mono uppercase tracking-wider text-cyan-300 font-semibold">
+            Professional Experience & Leadership
+          </h3>
+          <div className="space-y-2 text-xs text-slate-300">
+            <div className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-white">ICT Curriculum Coordinator & Trainer</span>
+                <span className="text-[11px] font-mono text-cyan-400">2025 - Present</span>
+              </div>
+              <div className="text-[11px] text-slate-400 font-mono">Future Leader Center (Puthi Komar Organization)</div>
+              <p className="text-slate-300 text-xs leading-relaxed">
+                Designed & taught curricula covering computer fundamentals, office productivity, digital design in Canva, and AI tools for 100+ youth; engineered internal QR attendance PWA to automate center operations.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
+              <div className="flex justify-between items-center">
+                <span className="font-bold text-white">Undergraduate Researcher & Software Builder</span>
+                <span className="text-[11px] font-mono text-cyan-400">2022 - Present</span>
+              </div>
+              <div className="text-[11px] text-slate-400 font-mono">National University of Battambang (NUBB)</div>
+              <p className="text-slate-300 text-xs leading-relaxed">
+                Final-year IT scholar focusing on mobile application architectures (Flutter) and backend engineering (Laravel); active participant in regional innovation contests and AgriTech systems.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Key Competencies Matrix */}
