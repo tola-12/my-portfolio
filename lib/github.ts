@@ -19,7 +19,7 @@ export interface GitHubRepo {
   updated_at: string;
 }
 
-export async function fetchGitHubStats(username = "hortola") {
+export async function fetchGitHubStats(username = process.env.GITHUB_USERNAME || "tola-12") {
   const token = process.env.GITHUB_ACCESS_TOKEN;
   const headers: HeadersInit = {
     Accept: "application/vnd.github.v3+json",
@@ -60,7 +60,7 @@ export async function fetchGitHubStats(username = "hortola") {
         bio: "Full-Stack Software Engineer & Mobile Developer",
         public_repos: 12,
         followers: 18,
-        avatar_url: "https://avatars.githubusercontent.com/u/10000000?v=4",
+        avatar_url: "/images/hortola_.jpg",
         html_url: `https://github.com/${username}`,
       },
       repos: [],

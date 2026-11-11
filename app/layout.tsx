@@ -3,6 +3,7 @@ import "./globals.css";
 import { ToastProvider } from "@/components/ToastProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://hortola.dev"),
   title: "Hor Tola | Full-Stack Software Engineer & Tech Mentor",
   description:
     "Portfolio of Hor Tola - 4th-Year IT Scholar at NUBB & Computer Trainer at FLC Battambang. Specializing in Laravel, Flutter, Next.js, and clean software architecture.",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     "NUBB",
     "AgriTech",
   ],
-  authors: [{ name: "Hor Tola", url: "https://github.com/hortola" }],
+  authors: [{ name: "Hor Tola", url: "https://github.com/tola-12" }],
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2308090C'/><text x='50%' y='56%' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='42' fill='%2300F0FF'>HT.</text></svg>",
   },

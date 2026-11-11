@@ -70,7 +70,7 @@ Design & AI       : Figma UI/UX, Canva, Google Workspace, Microsoft 365, LLM Pro
 3. Campus Mobile Hub - Cross-platform Flutter course assistant
 4. Power Platform Bots - Automated reporting for educational institutions`,
 
-  github: `Profile : github.com/hortola
+  github: `Profile : github.com/tola-12
 Repos   : 12+ public repositories
 Focus   : Laravel REST APIs, Flutter cross-platform clients, Next.js web applications
 Status  : Open for open-source contributions & collaborations`,

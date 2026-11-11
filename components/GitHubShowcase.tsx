@@ -68,13 +68,13 @@ export function GitHubShowcase() {
           </button>
 
           <a
-            href="https://github.com/hortola"
+            href="https://github.com/tola-12"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => soundFx.playClick()}
             className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-mono font-medium transition flex items-center gap-1.5"
           >
-            <span>github/hortola</span>
+            <span>github/tola-12</span>
             <span>&rarr;</span>
           </a>
         </div>
@@ -151,21 +151,21 @@ export function GitHubShowcase() {
               desc: "Laravel backend REST API for rice seed lineage and agricultural verification in Battambang.",
               lang: "PHP",
               stars: 14,
-              url: "https://github.com/hortola",
+              url: "https://github.com/tola-12",
             },
             {
               name: "flc-smart-attendance",
               desc: "PWA portal automating student QR attendance and Power Automate parental notifications.",
               lang: "PHP",
               stars: 9,
-              url: "https://github.com/hortola",
+              url: "https://github.com/tola-12",
             },
             {
               name: "campus-learner-hub",
               desc: "Cross-platform Flutter app for offline course schedules, assignments, and curriculum tracking.",
               lang: "Dart",
               stars: 12,
-              url: "https://github.com/hortola",
+              url: "https://github.com/tola-12",
             },
           ].map((item, idx) => (
             <a
