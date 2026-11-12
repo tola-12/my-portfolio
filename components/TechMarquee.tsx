@@ -271,13 +271,13 @@ export function TechMarquee() {
         </div>
 
         {/* View Mode Switcher */}
-        <div className="flex items-center gap-2 p-1 rounded-xl glass-panel text-xs font-mono">
+        <div className="flex items-center gap-1.5 sm:gap-2 p-1 rounded-xl glass-panel text-xs font-mono w-full sm:w-auto">
           <button
             onClick={() => {
               soundFx.playClick();
               setViewMode("stream");
             }}
-            className={`px-3 py-1.5 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${
+            className={`flex-1 sm:flex-none justify-center whitespace-nowrap px-3 py-1.5 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${
               viewMode === "stream"
                 ? "bg-cyan-400 text-brand-dark font-bold shadow-md shadow-cyan-500/20"
                 : "text-slate-400 hover:text-white"
@@ -291,7 +291,7 @@ export function TechMarquee() {
               soundFx.playClick();
               setViewMode("grid");
             }}
-            className={`px-3 py-1.5 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${
+            className={`flex-1 sm:flex-none justify-center whitespace-nowrap px-3 py-1.5 rounded-lg transition cursor-pointer flex items-center gap-1.5 ${
               viewMode === "grid"
                 ? "bg-cyan-400 text-brand-dark font-bold shadow-md shadow-cyan-500/20"
                 : "text-slate-400 hover:text-white"
@@ -307,12 +307,12 @@ export function TechMarquee() {
       {viewMode === "stream" && (
         <div className="space-y-4 relative py-2 overflow-hidden">
           {/* Edge Blur Gradients */}
-          <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-brand-dark to-transparent z-20 pointer-events-none"></div>
-          <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-brand-dark to-transparent z-20 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 left-0 w-6 sm:w-24 bg-gradient-to-r from-brand-dark to-transparent z-20 pointer-events-none"></div>
+          <div className="absolute top-0 bottom-0 right-0 w-6 sm:w-24 bg-gradient-to-l from-brand-dark to-transparent z-20 pointer-events-none"></div>
 
           {/* Track 1: Languages (Left-to-Right Continuous Flow) */}
           <div className="overflow-hidden">
-            <div className="animate-marquee-infinite gap-3.5 pr-3.5">
+            <div className="animate-marquee-infinite gap-3 sm:gap-3.5 pr-3 sm:pr-3.5">
               {[...languagesTrack, ...languagesTrack].map((tech, idx) => (
                 <motion.div
                   key={`${tech.id}-${idx}`}
@@ -322,7 +322,7 @@ export function TechMarquee() {
                     soundFx.playClick();
                     setActiveItem(tech);
                   }}
-                  className="flex items-center gap-3 px-4 py-2.5 rounded-xl glass-panel border border-white/5 hover:border-cyan-400/40 transition-colors cursor-pointer group shadow-lg flex-shrink-0"
+                  className="flex items-center gap-2.5 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl glass-panel border border-white/5 hover:border-cyan-400/40 transition-colors cursor-pointer group shadow-lg flex-shrink-0"
                   style={{
                     boxShadow: `0 0 0 1px rgba(255, 255, 255, 0.05)`,
                   }}
@@ -355,7 +355,7 @@ export function TechMarquee() {
                     soundFx.playClick();
                     setActiveItem(tech);
                   }}
-                  className="flex items-center gap-3 px-4 py-2.5 rounded-xl glass-panel border border-white/5 hover:border-emerald-400/40 transition-colors cursor-pointer group shadow-lg flex-shrink-0"
+                  className="flex items-center gap-2.5 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl glass-panel border border-white/5 hover:border-emerald-400/40 transition-colors cursor-pointer group shadow-lg flex-shrink-0"
                   style={{
                     boxShadow: `0 0 0 1px rgba(255, 255, 255, 0.05)`,
                   }}
@@ -434,7 +434,7 @@ export function TechMarquee() {
               exit={{ opacity: 0, scale: 0.92, y: 15 }}
               transition={{ type: "spring", stiffness: 350, damping: 28 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-md glass-panel rounded-2xl p-6 sm:p-7 space-y-4 border border-cyan-500/30 shadow-2xl"
+              className="relative w-full max-w-md glass-panel rounded-2xl p-5 sm:p-7 space-y-4 border border-cyan-500/30 shadow-2xl"
             >
               <button
                 onClick={() => setActiveItem(null)}

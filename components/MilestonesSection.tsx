@@ -64,7 +64,7 @@ export function MilestonesSection() {
         </p>
       </motion.div>
 
-      <div className="relative border-l border-white/10 ml-4 sm:ml-8 pl-6 sm:pl-8 space-y-8">
+      <div className="relative border-l border-white/10 ml-3 sm:ml-8 pl-5 sm:pl-8 space-y-8">
         {milestones.map((m, idx) => (
           <motion.div
             key={idx}
@@ -76,10 +76,10 @@ export function MilestonesSection() {
             className="relative group cursor-default"
           >
             <div
-              className={`absolute -left-[33px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full ${m.color} ring-4 ring-brand-dark transition-transform duration-300 group-hover:scale-125 shadow-[0_0_8px_currentColor]`}
+              className={`absolute -left-[29px] sm:-left-[41px] top-1.5 w-4 h-4 rounded-full ${m.color} ring-4 ring-brand-dark transition-transform duration-300 group-hover:scale-125 shadow-[0_0_8px_currentColor]`}
             />
             <div className="space-y-1.5 transition-transform duration-200 group-hover:translate-x-1">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className={`text-xs font-mono font-semibold ${m.textColor}`}>
                   {m.period}
                 </span>

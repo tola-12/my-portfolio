@@ -145,7 +145,7 @@ export function ProjectsSection() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-2 text-xs font-mono">
+        <div className="flex overflow-x-auto sm:flex-wrap gap-2 pb-1 sm:pb-0 no-scrollbar text-xs font-mono">
           {[
             { key: "all", label: "All Builds" },
             { key: "fullstack", label: "Full-Stack" },
@@ -161,7 +161,7 @@ export function ProjectsSection() {
                 soundFx.playClick();
                 setFilter(item.key);
               }}
-              className={`px-3 py-1.5 rounded-lg transition ${
+              className={`whitespace-nowrap flex-shrink-0 px-3 py-1.5 rounded-lg transition ${
                 filter === item.key
                   ? "bg-white text-black font-semibold shadow-lg shadow-white/10"
                   : "bg-white/5 hover:bg-white/10 text-slate-300"
@@ -188,8 +188,8 @@ export function ProjectsSection() {
               onMouseEnter={() => soundFx.playBlip()}
               className="project-card glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-white/5 hover:border-cyan-500/30 transition-colors"
             >
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between">
+              <div className="p-5 sm:p-6 space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
                     {project.badge}
                   </span>
@@ -213,7 +213,7 @@ export function ProjectsSection() {
                 </div>
               </div>
 
-              <div className="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+              <div className="px-5 sm:px-6 py-3.5 sm:py-4 bg-white/[0.02] border-t border-white/5 flex flex-wrap items-center justify-between gap-2">
                 <span className="text-xs text-emerald-400 font-mono font-medium">
                   {project.highlight}
                 </span>

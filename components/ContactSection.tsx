@@ -44,16 +44,16 @@ export function ContactSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border-cyan-500/20"
+        className="glass-panel rounded-3xl p-5 sm:p-8 lg:p-12 relative overflow-hidden border-cyan-500/20"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {/* Left Contact Info */}
           <div className="space-y-6">
             <div className="space-y-2">
               <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
                 Let’s Collaborate
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
                 Have an ambitious project or want to build together?
               </h2>
               <p className="text-slate-300 text-sm leading-relaxed">
@@ -63,22 +63,22 @@ export function ContactSection() {
 
             {/* Contact Handles */}
             <div className="space-y-3 font-mono text-xs">
-              <div className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5">
+              <div className="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-1 sm:gap-2 p-3.5 rounded-xl bg-white/5 border border-white/5">
                 <span className="text-slate-400">Location:</span>
                 <span className="text-white">Krong Battambang, Cambodia 🇰🇭</span>
               </div>
 
               <div
-                className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/40 transition group"
+                className="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-1 sm:gap-2 p-3.5 rounded-xl bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/40 transition group"
                 onClick={() => copyToClipboard("hortola.dev@gmail.com", "Email copied to clipboard!")}
               >
                 <span className="text-slate-400">Email:</span>
-                <span className="text-cyan-400 font-semibold group-hover:underline">
+                <span className="text-cyan-400 font-semibold group-hover:underline break-all min-[420px]:text-right">
                   hortola.dev@gmail.com (Click to copy)
                 </span>
               </div>
 
-              <div className="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5">
+              <div className="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-1 sm:gap-2 p-3.5 rounded-xl bg-white/5 border border-white/5">
                 <span className="text-slate-400">Direct Chat:</span>
                 <div className="flex items-center gap-2">
                   <a
@@ -186,7 +186,7 @@ export function ContactSection() {
                   <span>Transmitting...</span>
                 </>
               ) : (
-                <span>Transmit Message (Saved to DB + Instant Telegram Alert)</span>
+                <span>Transmit Message <span className="hidden sm:inline">(Saved to DB + Instant Telegram Alert)</span></span>
               )}
             </motion.button>
           </form>

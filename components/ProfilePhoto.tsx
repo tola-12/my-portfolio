@@ -34,10 +34,10 @@ export function ProfilePhoto() {
       {/* Main Glassmorphic Photo Card */}
       <div
         onMouseEnter={() => soundFx.playBlip()}
-        className="relative rounded-2xl glass-panel p-3 border border-white/10 shadow-2xl overflow-hidden"
+        className="relative rounded-2xl glass-panel p-2.5 sm:p-3 border border-white/10 shadow-2xl"
       >
         {/* Photo Container */}
-        <div className="relative aspect-[4/4.8] sm:aspect-[4/5.2] w-full rounded-xl overflow-hidden bg-[#0a0d14] border border-white/5 flex items-center justify-center">
+        <div className="relative aspect-[4/4.6] sm:aspect-[4/5.2] w-full rounded-xl overflow-hidden bg-[#0a0d14] border border-white/5 flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.img
               key={currentPhoto.src}
@@ -52,13 +52,13 @@ export function ProfilePhoto() {
           </AnimatePresence>
 
           {/* Cyberpunk Scanline & Vignette Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
 
           {/* Cyberpunk Corner HUD brackets */}
           <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-cyan-400 pointer-events-none"></div>
-          <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-cyan-400 pointer-events-none"></div>
+          <div className="hidden sm:block absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-cyan-400 pointer-events-none"></div>
           <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-emerald-400 pointer-events-none"></div>
-          <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-400 pointer-events-none"></div>
+          <div className="hidden sm:block absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-400 pointer-events-none"></div>
 
           {/* Interactive Photo Switcher Badge in Top Right */}
           <motion.button
@@ -66,38 +66,38 @@ export function ProfilePhoto() {
             whileTap={{ scale: 0.95 }}
             onClick={handleTogglePhoto}
             title="Click to toggle photo angle"
-            className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-mono text-cyan-300 hover:text-white hover:border-cyan-400 transition flex items-center gap-1.5 shadow-lg cursor-pointer"
+            className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/15 text-[11px] font-mono text-cyan-300 hover:text-white hover:border-cyan-400 transition flex items-center gap-1.5 shadow-lg cursor-pointer"
           >
             <span>🔄</span>
             <span>Switch Photo</span>
           </motion.button>
 
           {/* Bottom Card Identity Overlay */}
-          <div className="absolute bottom-0 inset-x-0 p-5 space-y-1 z-10">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-mono text-cyan-300 font-bold bg-cyan-950/80 border border-cyan-800/50 px-2 py-0.5 rounded">
+          <div className="absolute bottom-0 inset-x-0 p-4 pb-6 sm:p-5 sm:pb-6 space-y-1 z-10">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[10px] sm:text-[11px] font-mono text-cyan-300 font-bold bg-cyan-950/80 border border-cyan-800/50 px-2 py-0.5 rounded">
                 SOFTWARE ARCHITECT
               </span>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
+              <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-emerald-400">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 ACTIVE
               </span>
             </div>
-            <h3 className="text-2xl font-extrabold text-white tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
               Hor Tola
             </h3>
-            <p className="text-xs text-slate-300 font-mono">
+            <p className="text-[11px] sm:text-xs text-slate-300 font-mono truncate">
               National University of Battambang (NUBB)
             </p>
           </div>
         </div>
 
-        {/* Floating Cyberpunk Orbit Badges */}
-        <div className="absolute -top-3 -left-3 px-3 py-1.5 rounded-xl glass-panel border border-cyan-500/40 text-cyan-300 font-mono text-xs shadow-lg animate-float">
+        {/* Floating Cyberpunk Orbit Badges (Inset cleanly on mobile to prevent clipping/overflow) */}
+        <div className="absolute -top-3 left-2 sm:-left-3 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl glass-panel border border-cyan-500/40 text-cyan-300 font-mono text-[11px] sm:text-xs shadow-lg animate-float z-20">
           <span>⚡ Full-Stack & Mobile</span>
         </div>
 
-        <div className="absolute -bottom-3 -right-3 px-3 py-1.5 rounded-xl glass-panel border border-emerald-500/40 text-emerald-300 font-mono text-xs shadow-lg">
+        <div className="hidden min-[380px]:block absolute -bottom-3 right-2 sm:-right-3 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl glass-panel border border-emerald-500/40 text-emerald-300 font-mono text-[11px] sm:text-xs shadow-lg z-20">
           <span>🇰🇭 Krong Battambang</span>
         </div>
       </div>

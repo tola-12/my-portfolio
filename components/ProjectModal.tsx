@@ -27,7 +27,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             exit={{ opacity: 0, scale: 0.94, y: 15 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-xl glass-panel rounded-2xl p-6 sm:p-8 space-y-4 border-cyan-500/30"
+            className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto glass-panel rounded-2xl p-5 sm:p-8 space-y-4 border-cyan-500/30"
           >
             <button
               onClick={onClose}
@@ -43,7 +43,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800/40 px-2.5 py-1 rounded-md inline-block">
                 {project.fullDetails.badge}
               </span>
-              <h3 className="text-2xl font-bold text-white">{project.fullDetails.title}</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white pr-8">{project.fullDetails.title}</h3>
               <p className="text-sm font-mono text-slate-400 border-b border-white/10 pb-3">
                 Tech: <span className="text-emerald-300">{project.fullDetails.tech}</span>
               </p>

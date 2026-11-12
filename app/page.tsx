@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-12 pb-24 space-y-24">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-12 pb-16 sm:pb-24 space-y-14 sm:space-y-20 lg:space-y-24">
         {/* 1. Hero Section with Cyberpunk Profile Photo */}
         <HeroSection />
 

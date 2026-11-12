@@ -332,7 +332,7 @@ export function LockScreenCalendar() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className={`lg:col-span-7 relative rounded-[2.25rem] p-6 sm:p-8 flex flex-col justify-between overflow-hidden border transition-all duration-500 min-h-[430px] ${
+          className={`lg:col-span-7 relative rounded-3xl sm:rounded-[2.25rem] p-4 sm:p-8 flex flex-col justify-between overflow-hidden border transition-all duration-500 min-h-[360px] sm:min-h-[430px] ${
             flashlightOn
               ? "border-cyan-400/60 shadow-[0_0_70px_rgba(0,240,255,0.25)]"
               : "border-white/15 shadow-2xl"
@@ -412,12 +412,12 @@ export function LockScreenCalendar() {
           </div>
 
           {/* CENTER HERO: iPhone Lock Screen Big Date & Giant Time */}
-          <div className="relative z-10 my-auto py-8 flex flex-col items-center text-center space-y-2 select-none">
+          <div className="relative z-10 my-auto py-5 sm:py-8 flex flex-col items-center text-center space-y-2 select-none">
             {/* Weekday Badge */}
             <motion.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-cyan-400 font-semibold"
+              className="text-[11px] sm:text-sm font-mono uppercase tracking-[0.2em] sm:tracking-[0.25em] text-cyan-400 font-semibold"
             >
               {weekdayText}
             </motion.div>
@@ -427,7 +427,7 @@ export function LockScreenCalendar() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-2xl sm:text-4xl md:text-[2.65rem] font-bold text-white tracking-tight drop-shadow-sm"
+              className="text-xl min-[380px]:text-2xl sm:text-4xl md:text-[2.65rem] font-bold text-white tracking-tight drop-shadow-sm"
             >
               {bigDateText}
             </motion.div>
@@ -435,41 +435,41 @@ export function LockScreenCalendar() {
             {/* Giant iOS Lock Screen Clock */}
             <div className="relative flex items-baseline justify-center pt-1">
               <div
-                className={`text-[4.75rem] sm:text-[6.75rem] md:text-[7.5rem] font-extrabold leading-none tracking-tight tabular-nums bg-gradient-to-b ${activeTheme.gradient} bg-clip-text text-transparent drop-shadow-[0_12px_32px_rgba(0,0,0,0.45)]`}
+                className={`text-[3.5rem] min-[380px]:text-[4.25rem] sm:text-[6.5rem] md:text-[7.5rem] font-extrabold leading-none tracking-tight tabular-nums bg-gradient-to-b ${activeTheme.gradient} bg-clip-text text-transparent drop-shadow-[0_12px_32px_rgba(0,0,0,0.45)]`}
                 style={{ fontVariantNumeric: "tabular-nums" }}
               >
                 {timeDisplay.main}
               </div>
 
               {/* Seconds & AM/PM Tag beside the giant digits */}
-              <div className="ml-2 sm:ml-3 flex flex-col items-start font-mono">
-                <span className="text-lg sm:text-2xl font-bold text-cyan-300 tabular-nums leading-none">
+              <div className="ml-1.5 sm:ml-3 flex flex-col items-start font-mono">
+                <span className="text-sm sm:text-2xl font-bold text-cyan-300 tabular-nums leading-none">
                   :{timeDisplay.seconds}
                 </span>
                 {!use24Hour && (
-                  <span className="text-xs sm:text-sm font-semibold text-slate-400 mt-1">
+                  <span className="text-[11px] sm:text-sm font-semibold text-slate-400 mt-1">
                     {timeDisplay.period}
                   </span>
                 )}
-                <span className="text-[10px] text-emerald-400/90 mt-1 uppercase tracking-wider">
+                <span className="text-[9px] sm:text-[10px] text-emerald-400/90 mt-1 uppercase tracking-wider">
                   ICT UTC+7
                 </span>
               </div>
             </div>
 
             {/* iOS Lock Screen Circular / Pill Widgets Strip */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 pt-5">
-              <div className="px-3.5 py-2 rounded-2xl bg-white/[0.06] backdrop-blur-md border border-white/10 flex items-center gap-2 text-xs font-mono text-slate-200">
-                <Sun className="w-4 h-4 text-amber-300" />
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 pt-4 sm:pt-5">
+              <div className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-white/[0.06] backdrop-blur-md border border-white/10 flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono text-slate-200">
+                <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
                 <span>29°C Clear</span>
               </div>
 
-              <div className="px-3.5 py-2 rounded-2xl bg-white/[0.06] backdrop-blur-md border border-white/10 flex items-center gap-2 text-xs font-mono text-slate-200">
+              <div className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-white/[0.06] backdrop-blur-md border border-white/10 flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono text-slate-200">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Hor Tola • Available</span>
               </div>
 
-              <div className="px-3.5 py-2 rounded-2xl bg-white/[0.06] backdrop-blur-md border border-white/10 flex items-center gap-2 text-xs font-mono text-cyan-300">
+              <div className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl bg-white/[0.06] backdrop-blur-md border border-white/10 flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono text-cyan-300">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Level 21 Edition</span>
               </div>
@@ -537,11 +537,11 @@ export function LockScreenCalendar() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="lg:col-span-5 glass-panel rounded-[2.25rem] p-6 sm:p-7 border border-white/10 flex flex-col justify-between space-y-5 shadow-2xl"
+          className="lg:col-span-5 glass-panel rounded-3xl sm:rounded-[2.25rem] p-4 sm:p-7 border border-white/10 flex flex-col justify-between space-y-4 sm:space-y-5 shadow-2xl"
         >
           {/* Calendar Top Header */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col min-[420px]:flex-row min-[420px]:items-center justify-between gap-2">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-emerald-400/20 border border-cyan-400/30 flex flex-col items-center justify-center font-mono">
                   <span className="text-[9px] uppercase text-cyan-300 font-bold leading-none">
@@ -654,8 +654,8 @@ export function LockScreenCalendar() {
           </div>
 
           {/* Selected Date Status Banner */}
-          <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1.5">
-            <div className="flex items-center justify-between text-xs font-mono">
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-1.5">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
               <span className="text-cyan-400 font-semibold flex items-center gap-1.5">
                 <CalendarIcon className="w-3.5 h-3.5" />
                 {selectedDay
@@ -679,3 +679,4 @@ export function LockScreenCalendar() {
     </section>
   );
 }
+

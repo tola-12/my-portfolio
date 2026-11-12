@@ -61,7 +61,7 @@ export function GitHubShowcase() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -101,23 +101,23 @@ export function GitHubShowcase() {
       >
         <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-cyan-500/20 transition-colors">
           <div className="text-slate-400">Public Repos</div>
-          <div className="text-xl font-bold text-white">
+          <div className="text-base sm:text-xl font-bold text-white">
             {profile?.public_repos ?? "12+"}
           </div>
         </motion.div>
         <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-cyan-500/20 transition-colors">
           <div className="text-slate-400">Total Followers</div>
-          <div className="text-xl font-bold text-cyan-400">
+          <div className="text-base sm:text-xl font-bold text-cyan-400">
             {profile?.followers ?? "18+"}
           </div>
         </motion.div>
         <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-emerald-500/20 transition-colors">
           <div className="text-slate-400">Primary Language</div>
-          <div className="text-xl font-bold text-emerald-400">PHP / Dart</div>
+          <div className="text-base sm:text-xl font-bold text-emerald-400">PHP / Dart</div>
         </motion.div>
         <motion.div whileHover={{ y: -3 }} className="glass-panel p-4 rounded-xl border border-white/5 space-y-1 hover:border-teal-500/20 transition-colors">
           <div className="text-slate-400">Ecosystem</div>
-          <div className="text-xl font-bold text-teal-300">Laravel & Flutter</div>
+          <div className="text-base sm:text-xl font-bold text-teal-300">Laravel & Flutter</div>
         </motion.div>
       </motion.div>
 
@@ -139,8 +139,8 @@ export function GitHubShowcase() {
               className="glass-panel p-5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col justify-between space-y-4 group cursor-pointer"
             >
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-sm font-bold text-white group-hover:text-cyan-400 transition truncate max-w-[200px]">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-mono text-sm font-bold text-white group-hover:text-cyan-400 transition truncate min-w-0 flex-1 pr-2">
                     {repo.name}
                   </span>
                   <span className="text-[11px] font-mono text-slate-500">
@@ -204,8 +204,8 @@ export function GitHubShowcase() {
               className="glass-panel p-5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col justify-between space-y-4 group cursor-pointer"
             >
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-sm font-bold text-white group-hover:text-cyan-400 transition">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="font-mono text-sm font-bold text-white group-hover:text-cyan-400 transition truncate min-w-0">
                     {item.name}
                   </span>
                   <span className="text-[11px] font-mono text-slate-500">

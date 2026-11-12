@@ -30,10 +30,10 @@ export function BentoGrid() {
           transition={{ duration: 0.5, delay: 0.05 }}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
           onMouseEnter={() => soundFx.playBlip()}
-          className="glass-panel rounded-2xl p-6 md:col-span-2 flex flex-col justify-between relative overflow-hidden group border border-white/5 hover:border-cyan-500/30 transition-colors"
+          className="glass-panel rounded-2xl p-5 sm:p-6 md:col-span-2 flex flex-col justify-between relative overflow-hidden group border border-white/5 hover:border-cyan-500/30 transition-colors"
         >
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800/40 px-2.5 py-1 rounded-md">
                 Primary Weapons
               </span>
@@ -82,10 +82,10 @@ export function BentoGrid() {
           transition={{ duration: 0.5, delay: 0.1 }}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
           onMouseEnter={() => soundFx.playBlip()}
-          className="glass-panel rounded-2xl p-6 md:col-span-1 lg:col-span-2 flex flex-col justify-between border border-emerald-500/20 hover:border-emerald-500/40 bg-gradient-to-br from-emerald-950/20 to-transparent transition-colors"
+          className="glass-panel rounded-2xl p-5 sm:p-6 md:col-span-1 lg:col-span-2 flex flex-col justify-between border border-emerald-500/20 hover:border-emerald-500/40 bg-gradient-to-br from-emerald-950/20 to-transparent transition-colors"
         >
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="text-xs font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-1 rounded-md">
                 €4,000 Grant & 1st Place
               </span>
@@ -112,7 +112,7 @@ export function BentoGrid() {
           transition={{ duration: 0.5, delay: 0.15 }}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
           onMouseEnter={() => soundFx.playBlip()}
-          className="glass-panel rounded-2xl p-6 flex flex-col justify-between border border-white/5 hover:border-blue-500/30 transition-colors"
+          className="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between border border-white/5 hover:border-blue-500/30 transition-colors"
         >
           <div className="space-y-3">
             <span className="text-xs font-mono text-blue-400 bg-blue-950/60 border border-blue-800/40 px-2.5 py-1 rounded-md">
@@ -136,7 +136,7 @@ export function BentoGrid() {
           transition={{ duration: 0.5, delay: 0.2 }}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
           onMouseEnter={() => soundFx.playBlip()}
-          className="glass-panel rounded-2xl p-6 flex flex-col justify-between border border-white/5 hover:border-purple-500/30 transition-colors"
+          className="glass-panel rounded-2xl p-5 sm:p-6 flex flex-col justify-between border border-white/5 hover:border-purple-500/30 transition-colors"
         >
           <div className="space-y-3">
             <span className="text-xs font-mono text-purple-400 bg-purple-950/60 border border-purple-800/40 px-2.5 py-1 rounded-md">
@@ -160,10 +160,10 @@ export function BentoGrid() {
           transition={{ duration: 0.5, delay: 0.25 }}
           whileHover={{ y: -4, transition: { duration: 0.2 } }}
           onMouseEnter={() => soundFx.playBlip()}
-          className="glass-panel rounded-2xl p-6 md:col-span-2 flex flex-col justify-between border border-white/5 hover:border-amber-500/30 transition-colors"
+          className="glass-panel rounded-2xl p-5 sm:p-6 md:col-span-2 flex flex-col justify-between border border-white/5 hover:border-amber-500/30 transition-colors"
         >
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="text-xs font-mono text-amber-400 bg-amber-950/60 border border-amber-800/40 px-2.5 py-1 rounded-md">
                 Battlestation Rig
               </span>

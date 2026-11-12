@@ -41,26 +41,26 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b border-white/5 bg-brand-dark/80 backdrop-blur-xl transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-2">
           {/* Brand Logo with Profile Picture */}
           <a
             href="#"
             onClick={() => soundFx.playClick()}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2.5 sm:gap-3 group min-w-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-emerald-500 to-blue-600 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-cyan-500/20 overflow-hidden flex-shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-emerald-500 to-blue-600 p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-cyan-500/20 overflow-hidden flex-shrink-0">
               <img
                 src="/images/hortola_.jpg"
                 alt="Hor Tola"
                 className="w-full h-full object-cover rounded-[9px]"
               />
             </div>
-            <div className="hidden sm:block">
-              <div className="font-bold text-sm text-slate-100 tracking-tight flex items-center gap-1.5">
-                Hor Tola
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <div className="min-w-0">
+              <div className="font-bold text-sm text-slate-100 tracking-tight flex items-center gap-1.5 truncate">
+                <span>Hor Tola</span>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
               </div>
-              <div className="text-[11px] font-mono text-slate-400">
+              <div className="hidden sm:block text-[11px] font-mono text-slate-400 truncate">
                 Software Engineer & Tech Mentor
               </div>
             </div>
@@ -127,7 +127,7 @@ export function Navbar() {
           </nav>
 
           {/* Right CTAs */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             {/* Audio Toggle */}
             <motion.button
               whileTap={{ scale: 0.9 }}
@@ -157,7 +157,7 @@ export function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={fireCelebration}
-              className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-medium hover:bg-emerald-500/20 transition flex items-center gap-1.5 cursor-pointer shadow-sm"
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] sm:text-xs font-mono font-medium hover:bg-emerald-500/20 transition flex items-center gap-1 sm:gap-1.5 cursor-pointer shadow-sm"
             >
               <span>🎉</span>
               <span className="font-semibold">Level 21</span>
@@ -201,7 +201,7 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="lg:hidden border-t border-white/5 bg-brand-dark/95 backdrop-blur-2xl px-4 py-4 space-y-2 overflow-hidden"
+              className="lg:hidden border-t border-white/5 bg-brand-dark/95 backdrop-blur-2xl px-4 py-4 space-y-1.5 max-h-[calc(100vh-4.5rem)] overflow-y-auto"
             >
               {[
                 { href: "#about", label: "About" },
@@ -221,22 +221,32 @@ export function Navbar() {
                     soundFx.playClick();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="block px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:text-cyan-400 hover:bg-white/5 transition"
+                  className="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:text-cyan-400 hover:bg-white/5 transition"
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="pt-2 border-t border-white/5 flex gap-2">
+              <div className="pt-3 border-t border-white/5 flex gap-2">
                 <button
                   onClick={() => {
                     soundFx.playClick();
                     setIsResumeOpen(true);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="flex-1 py-2 rounded-lg glass-panel text-xs font-mono text-cyan-300 text-center cursor-pointer"
+                  className="flex-1 py-2.5 rounded-xl glass-panel text-xs font-mono text-cyan-300 text-center cursor-pointer"
                 >
                   📄 View Resume
                 </button>
+                <a
+                  href="#contact"
+                  onClick={() => {
+                    soundFx.playClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex-1 py-2.5 rounded-xl bg-white text-brand-dark text-xs font-semibold text-center cursor-pointer"
+                >
+                  Connect &rarr;
+                </a>
               </div>
             </motion.div>
           )}

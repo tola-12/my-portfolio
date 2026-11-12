@@ -236,7 +236,7 @@ export function SkillsMatrix() {
         </div>
 
         {/* Domain Filter Pills */}
-        <div className="flex flex-wrap gap-2 text-xs font-mono">
+        <div className="flex overflow-x-auto sm:flex-wrap gap-2 pb-1 sm:pb-0 no-scrollbar text-xs font-mono">
           {domains.map((dom) => (
             <motion.button
               key={dom.key}
@@ -244,7 +244,7 @@ export function SkillsMatrix() {
               whileTap={{ scale: 0.95 }}
               onClick={() => handleSelect(dom.key)}
               onMouseEnter={() => soundFx.playBlip()}
-              className={`px-3 py-1.5 rounded-lg transition relative ${
+              className={`whitespace-nowrap flex-shrink-0 px-3 py-1.5 rounded-lg transition relative ${
                 activeDomain === dom.key
                   ? "bg-cyan-400 text-brand-dark font-bold shadow-lg shadow-cyan-500/25"
                   : "glass-panel text-slate-300 hover:text-white hover:border-cyan-500/30"
@@ -272,7 +272,7 @@ export function SkillsMatrix() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
               onMouseEnter={() => soundFx.playBlip()}
-              className="glass-panel rounded-2xl p-5 border border-white/5 hover:border-cyan-500/30 transition-colors space-y-3 group"
+              className="glass-panel rounded-2xl p-4 sm:p-5 border border-white/5 hover:border-cyan-500/30 transition-colors space-y-3 group"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800/40 px-2 py-0.5 rounded">

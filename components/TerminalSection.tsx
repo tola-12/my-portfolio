@@ -217,16 +217,16 @@ export function TerminalSection() {
         className="rounded-2xl border border-white/10 bg-[#0B0D13] shadow-2xl overflow-hidden font-mono text-sm hover:border-cyan-500/30 transition-colors"
       >
         {/* Terminal Header Bar */}
-        <div className="bg-[#121620] px-4 py-3 border-b border-white/10 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-            <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-            <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-            <span className="text-xs text-slate-400 ml-2">
+        <div className="bg-[#121620] px-3 sm:px-4 py-3 border-b border-white/10 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block flex-shrink-0"></span>
+            <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block flex-shrink-0"></span>
+            <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block flex-shrink-0"></span>
+            <span className="text-xs text-slate-400 ml-1 sm:ml-2 truncate">
               tola@macbook-pro: ~/workspace
             </span>
           </div>
-          <div className="text-[11px] text-slate-500 hidden sm:block">
+          <div className="text-[11px] text-slate-500 hidden sm:block flex-shrink-0">
             Type <code className="text-cyan-400">help</code> to list commands
           </div>
         </div>
@@ -234,7 +234,7 @@ export function TerminalSection() {
         {/* Terminal Output Window */}
         <div
           ref={terminalBodyRef}
-          className="p-5 space-y-3 h-72 overflow-y-auto text-xs sm:text-sm text-slate-300"
+          className="p-4 sm:p-5 space-y-3 h-64 sm:h-72 overflow-y-auto text-xs sm:text-sm text-slate-300"
         >
           {logs.map((log, idx) => (
             <div
@@ -246,23 +246,23 @@ export function TerminalSection() {
         </div>
 
         {/* Terminal Input Line */}
-        <div className="p-3 bg-[#0e121b] border-t border-white/5 flex items-center gap-2">
-          <span className="text-emerald-400 font-bold pl-2 select-none">
-            ht@battambang:~$
+        <div className="px-2.5 py-2.5 sm:p-3 bg-[#0e121b] border-t border-white/5 flex items-center gap-1.5 sm:gap-2">
+          <span className="text-emerald-400 font-bold pl-1 sm:pl-2 select-none flex-shrink-0 text-xs sm:text-sm">
+            <span className="hidden sm:inline">ht@battambang:</span>~$
           </span>
           <input
             type="text"
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleCommand()}
-            className="flex-1 bg-transparent text-white outline-none font-mono text-xs sm:text-sm placeholder-slate-600"
+            className="min-w-0 flex-1 bg-transparent text-white outline-none font-mono text-xs sm:text-sm placeholder-slate-600"
             placeholder="Type 'help' and press Enter..."
             autoComplete="off"
             spellCheck="false"
           />
           <button
             onClick={handleCommand}
-            className="text-xs px-3 py-1 bg-white/10 hover:bg-cyan-500 hover:text-black rounded text-slate-300 font-mono transition cursor-pointer"
+            className="flex-shrink-0 text-xs px-2.5 sm:px-3 py-1 bg-white/10 hover:bg-cyan-500 hover:text-black rounded text-slate-300 font-mono transition cursor-pointer"
           >
             Run
           </button>

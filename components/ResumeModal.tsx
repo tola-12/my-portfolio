@@ -27,7 +27,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             exit={{ opacity: 0, scale: 0.94, y: 15 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-panel rounded-2xl p-6 sm:p-8 space-y-6 border border-cyan-500/30 shadow-2xl"
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-panel rounded-2xl p-4 sm:p-8 space-y-6 border border-cyan-500/30 shadow-2xl"
           >
             {/* Close Button */}
             <button
@@ -43,7 +43,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </button>
 
         {/* Modal Header */}
-        <div className="border-b border-white/10 pb-4 flex items-center gap-4">
+        <div className="border-b border-white/10 pb-4 flex flex-col min-[420px]:flex-row min-[420px]:items-center gap-3 sm:gap-4 pr-8">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-400 to-emerald-400 p-[1.5px] overflow-hidden flex-shrink-0 shadow-lg shadow-cyan-500/20">
             <img
               src="/images/hortola_.jpg"
@@ -58,7 +58,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </span>
               <span className="text-xs font-mono text-slate-400">Level 21 • 2026 Edition</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            <h2 className="text-xl sm:text-3xl font-extrabold text-white">
               Hor Tola — Full-Stack Engineer
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 font-mono">
@@ -84,7 +84,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </h3>
           <div className="space-y-2 text-xs text-slate-300">
             <div className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-              <div className="flex justify-between items-center">
+              <div className="flex flex-wrap justify-between items-center gap-1">
                 <span className="font-bold text-white">ICT Curriculum Coordinator & Trainer</span>
                 <span className="text-[11px] font-mono text-cyan-400">2025 - Present</span>
               </div>
@@ -95,7 +95,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
 
             <div className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-              <div className="flex justify-between items-center">
+              <div className="flex flex-wrap justify-between items-center gap-1">
                 <span className="font-bold text-white">Undergraduate Researcher & Software Builder</span>
                 <span className="text-[11px] font-mono text-cyan-400">2022 - Present</span>
               </div>
@@ -112,7 +112,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           <h3 className="text-xs font-mono uppercase tracking-wider text-emerald-300 font-semibold">
             Core Competencies
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs font-mono">
             <div className="p-2 rounded-lg bg-white/5 border border-white/5 text-slate-200">
               <span className="text-cyan-400">Backend:</span> Laravel, PHP, Python, REST APIs
             </div>
@@ -160,7 +160,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           <span className="text-xs font-mono text-slate-400">
             Available for full-time engineering & consulting
           </span>
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <button
               onClick={() => {
                 soundFx.playClick();

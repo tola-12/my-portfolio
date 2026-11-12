@@ -70,10 +70,10 @@ export function TestimonialsSection() {
             transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
             whileHover={{ y: -6, transition: { duration: 0.2 } }}
             onMouseEnter={() => soundFx.playBlip()}
-            className="glass-panel rounded-2xl p-6 border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col justify-between space-y-4 group cursor-default"
+            className="glass-panel rounded-2xl p-5 sm:p-6 border border-white/5 hover:border-cyan-500/30 transition-colors flex flex-col justify-between space-y-4 group cursor-default"
           >
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <span
                   className={`text-[11px] font-mono border px-2 py-0.5 rounded ${item.badgeColor}`}
                 >
