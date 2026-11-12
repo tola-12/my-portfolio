@@ -491,3 +491,4 @@ export function FigmaIcon({ className = "w-6 h-6", size = 24 }: IconProps) {
     </svg>
   );
 }
+

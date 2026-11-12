@@ -78,14 +78,21 @@ export function Navbar() {
             <a
               href="#languages"
               onClick={() => soundFx.playClick()}
-              className="px-3 py-1.5 rounded-lg hover:text-cyan-400 hover:bg-white/5 transition"
+              className="px-2.5 py-1.5 rounded-lg hover:text-cyan-400 hover:bg-white/5 transition"
             >
               Languages
             </a>
             <a
+              href="#calendar"
+              onClick={() => soundFx.playClick()}
+              className="px-2.5 py-1.5 rounded-lg hover:text-cyan-400 hover:bg-white/5 transition"
+            >
+              Calendar
+            </a>
+            <a
               href="#skills"
               onClick={() => soundFx.playClick()}
-              className="px-3 py-1.5 rounded-lg hover:text-cyan-400 hover:bg-white/5 transition"
+              className="px-2.5 py-1.5 rounded-lg hover:text-cyan-400 hover:bg-white/5 transition"
             >
               Skills
             </a>
@@ -199,6 +206,7 @@ export function Navbar() {
               {[
                 { href: "#about", label: "About" },
                 { href: "#languages", label: "Languages & Frameworks" },
+                { href: "#calendar", label: "iOS Clock & Calendar" },
                 { href: "#skills", label: "Skills Matrix" },
                 { href: "#projects", label: "Projects" },
                 { href: "#terminal-section", label: "Terminal" },

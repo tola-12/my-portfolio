@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { TechMarquee } from "@/components/TechMarquee";
+import { LockScreenCalendar } from "@/components/LockScreenCalendar";
 import { SkillsMatrix } from "@/components/SkillsMatrix";
 import { BentoGrid } from "@/components/BentoGrid";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -23,7 +24,10 @@ export default function Home() {
         {/* 2. Acquired Languages & Frameworks Infinite Marquee */}
         <TechMarquee />
 
-        {/* 3. Interactive Skills Matrix with Category Tabs */}
+        {/* 3. iPhone Lock Screen Clock, Big Date & Interactive Calendar */}
+        <LockScreenCalendar />
+
+        {/* 4. Interactive Skills Matrix with Category Tabs */}
         <SkillsMatrix />
 
         {/* 3. Bento Grid Overview */}
